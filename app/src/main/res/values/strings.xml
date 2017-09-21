@@ -1,0 +1,252 @@
+<resources>
+    <string name="app_name">Sideways</string>
+    <string name="title_activity_sideways_launcher">Sideways</string>
+    <string name="api_key">AIzaSyAiYjtkKiAQB8jS61_RJNYdGSlg-6zXhDM</string>
+    <string name="google_client_id"> 258316913445-a98c8c58t2jlu6cul14g74bv5eokv7ki.apps.googleusercontent.com </string>
+    <string name="google_client_secret"> dYFnDmssQWEdRZym1doF_tG1 </string>
+    <string name="google_maps_key"> AIzaSyBhUfsA8Fg-IsyqT-U5t_LLPJVe97oJ0YQ </string>
+    <string name="facebook_app_id">1636995126597011</string>
+    <string name="facebook_app_secret">ce21fbe28f36faee91438d12535c8843</string>
+    <string name="title_activity_web">WebAct</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="facebook_protected_res_url">https://graph.facebook.com/v2.8/me</string>
+    <string name="com_facebook_loginview_log_out_button">Log out</string>
+    <string name="com_facebook_loginview_log_in_button">Log in</string>
+    <string name="com_facebook_loginview_log_in_button_long"></string>
+    <string name="facebook_redirect_url">http://localhost:10000/</string>
+    <string name="facebook_login">https://www.facebook.com/v2.8/dialog/oauth?client_id={app-id}&amp;redirect_uri={redirect-uri}&amp;scope=email</string>
+    <string name="google_protected_res_url">https://www.googleapis.com/oauth2/v1/userinfo?alt=json</string>
+    <string name="facebook_service_request_url">https://graph.facebook.com/v2.8/oauth/access_token?</string>
+    <string name="login_method_indicator_tag">LOGIN_METHOD</string>
+    <string name="from_auth_to_launcher_acc_token">FACEBOOK</string>
+    <string name="from_auth_to_launcher_secret">AUTH_TOLAUNCHER_SECRET</string>
+    <string name="init_fb_profile_resp">FB_PROFILE</string>
+    <string name="access_token">ACCESSTOKEN</string>
+    <string name="key_login_method">LOGINMETHOD</string>
+    <string name="key_response">RESPONSE</string>
+    <string name="key_profile">PROFILE</string>
+    <string name="profile_label">PROFILE IN JSON FORMAT</string>
+    <string name="user_year_of_birth">PATHZ_USER_YOB</string>
+    <string name="user_gender">PATHZ_USER_GENDER</string>
+    <string name="user_email_address">PATHZ_USER_EMAIL_ADDRESS</string>
+    <string name="user_phone_number">PATHZ_USER_PHONE_NUMBER</string>
+    <string name="YOB">yob</string>
+    <string name="SEX">gender</string>
+    <string name="PHONE">phone</string>
+    <string name="EMAIL">email</string>
+    <string name="PASSWORD">password</string>
+    <string name="FIRSTNAME">firstname</string>
+    <string name="LASTNAME">lastname</string>
+    <string name="MILES">miles</string>
+    <string name="REPORTS">reports</string>
+    <string name="POINTS">points</string>
+
+    <string name="isthisyourph">Is this your phone number?</string>
+    <string name="phonenumber">Phone:</string>
+    <string name="avalidemailaddress">Please provide a valid email address.</string>
+    <string name="checkapptgenderbox">Please check the appropriate gender box.</string>
+    <string name="filenameforimages">zzzzzz_cam_image.jpg</string>
+    <string name="guest_warning_message">In order to get full benefits of the app, we recommend signing in with one of the methods shown above. Are you sure you want to sign in as a Guest?</string>
+    <string name="guest_warning_message2">Guests can only read location. In order to post a location, please sign in as an authorized user.</string>
+    <string name="image_upload_point" />
+    <string name="IMG_NAME">encoded_string</string>
+
+    <string-array name="valid_years_of_birth">
+        <item>Year of Birth</item>
+        <item>2000</item>
+        <item>1999</item>
+        <item>1998</item>
+        <item>1997</item>
+        <item>1996</item>
+        <item>1995</item>
+        <item>1994</item>
+        <item>1993</item>
+        <item>1992</item>
+        <item>1991</item>
+        <item>1990</item>
+        <item>2000</item>
+        <item>1999</item>
+        <item>1998</item>
+        <item>1997</item>
+        <item>1996</item>
+        <item>1995</item>
+        <item>1994</item>
+        <item>1993</item>
+        <item>1992</item>
+        <item>1991</item>
+        <item>1990</item>
+        <item>1989</item>
+        <item>1988</item>
+        <item>1987</item>
+        <item>1986</item>
+        <item>1985</item>
+        <item>1984</item>
+        <item>1983</item>
+        <item>1982</item>
+        <item>1981</item>
+        <item>1980</item>
+        <item>1979</item>
+        <item>1978</item>
+        <item>1977</item>
+        <item>1976</item>
+        <item>1975</item>
+        <item>1974</item>
+        <item>1973</item>
+        <item>1972</item>
+        <item>1971</item>
+        <item>1970</item>
+        <item>1968</item>
+        <item>1967</item>
+        <item>1966</item>
+        <item>1965</item>
+        <item>1964</item>
+        <item>1963</item>
+        <item>1962</item>
+        <item>1961</item>
+        <item>1960</item>
+        <item>1959</item>
+        <item>1958</item>
+        <item>1957</item>
+        <item>1956</item>
+        <item>1955</item>
+        <item>1954</item>
+        <item>1953</item>
+        <item>1952</item>
+        <item>1951</item>
+        <item>1950</item>
+        <item>1949</item>
+        <item>1948</item>
+        <item>1947</item>
+        <item>1946</item>
+        <item>1945</item>
+        <item>1944</item>
+        <item>1943</item>
+        <item>1942</item>
+        <item>1941</item>
+        <item>1940</item>
+        <item>1939</item>
+        <item>1938</item>
+        <item>1937</item>
+        <item>1936</item>
+        <item>1935</item>
+        <item>1934</item>
+        <item>1933</item>
+        <item>1932</item>
+        <item>1931</item>
+        <item>1930</item>
+        <item>1929</item>
+        <item>1928</item>
+        <item>1927</item>
+        <item>1926</item>
+        <item>1925</item>
+        <item>1924</item>
+        <item>1923</item>
+        <item>1922</item>
+        <item>1921</item>
+        <item>1920</item>
+        <item>1919</item>
+        <item>1918</item>
+        <item>1917</item>
+        <item>1916</item>
+        <item>1915</item>
+        <item>1914</item>
+        <item>1913</item>
+        <item>1912</item>
+        <item>1911</item>
+        <item>1910</item>
+    </string-array>
+    <string name="congrat_for_posting">Cheers !, You just posted a location.</string>
+    <string name="LO">longitude</string>
+    <string name="LA">latitude</string>
+    <string name="TY">location_type</string>
+    <string name="ST">location_subtype</string>
+    <string name="UC">user_comment</string>
+    <string name="VU">voteup</string>
+    <string name="VD">votedown</string>
+    <string name="SL">static_location</string>
+    <string name="AL">alias</string>
+    <string name="TS">timestamp</string>
+    <string name="ID">placeid</string>
+    <string name="PP">path</string>
+
+    <string name="google_api_search_url">https://maps.googleapis.com/maps/api/place/nearbysearch/xml?location=MYLOCATION&amp;radius=RADIUS&amp;keyword=KEYWORD&amp;key=APPKEY></string>
+    <string name="date_of_event">date and time of the event</string>
+    <string name="donedatebuttext">Done with selecting date</string>
+    <string name="baseurl">http://www.innovathon.com/pathz/</string>
+    <string name="updatescriptname">updateLocs.php</string>
+    <string name="verifycode">verifyCode.php</string>
+    <string name="sendverifcode">sendVerifCode.php</string>
+    <string name="verifyemail">sendVerifTempPassword.php</string>
+    <string name="registerphp">registerUser.php</string>
+    <string name="instr0">Please enter or verify your number:</string>
+    <string name="downloading_msg">Downloading...</string>
+    <string name="thankyouforinput">Thank You !</string>
+    <string name="google_maps_app_key">AIzaSyDNfio0ic2Y5XnCk1HsR1ti2nEjPEPRcc4</string>
+
+    <string name="crash_dialog_text">An unfortunate incident has occurred please send the crash report to us to help us fix the problem.</string>
+
+    <string name="map_db">Post a location</string>
+    <string name="curloc_lon_tag">CURR_LOC_LON</string>
+    <string name="curloc_lat_tag">CURR_LOC_LAT</string>
+    <string name="readscriptname">getLocs.php</string>
+    <string name="writescriptname">postLocs.php</string>
+    <string name="postuserinfourl">postUser.php</string>
+    <string name="user_id_label">UserId</string>
+    <string name="send">SEND</string>
+    <string name="user_comment_tag">USER_COMMENT</string>
+
+    <string name="isloggedintag">ISLOGGEDIN</string>
+    <string name="auth_method">AUTH_METHOD</string>
+    <string name="welcomemsg">Welcome</string>
+    <string name="google_signin_success">GG_SIGNIN_SUCCESS</string>
+    <string name="facebook_id_lable">id</string>
+    <string name="facebook_name_lable">name</string>
+    <string name="facebook_age_lable">age</string>
+    <string name="facebook_email_lable">email</string>
+    <string name="genderlabel">gender</string>
+    <string name="google_parcelable_account">google_account_parcelable</string>
+    <string name="google_user_name">name</string>
+    <string name="id_lable">id</string>
+    <string name="name_lable">name</string>
+    <string name="age_lable">age</string>
+    <string name="email_lable">email</string>
+    <string name="gender_label">gender</string>
+    <string name="title_label">Let\'s get to know each other.</string>
+    <string name="mynameis">Your Name</string>
+    <string name="users_previous_comments">users_previous_comments</string>
+    <string name="title_activity_main">Sideways</string>
+    <string name="title_activity_register_panel">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Enter your email address.</string>
+    <string name="prompt_password">Enter the temp password we have emailed you.</string>
+    <string name="action_sign_in">Submit</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_phone_number_verification">PhoneNumberVerificationActivity</string>
+    <string name="instr_for_entering_verification_code">A verification code will be sent to you via SMS. When you received it Please enter it below.</string>
+    <string name="enter_temp_password">Please enter your temp password here and press submit.</string>
+    <string name="checktemppassword">checkTempPassword.php</string>
+    <string name="prompt_password2">Confirm your password above.</string>
+    <string name="password">password</string>
+    <string name="perm_password_hint">Choose your permanent password.</string>
+    <string name="yob_label">year_of_birth</string>
+    <string name="loginurl">getUser.php</string>
+    <string name="anonwelcomemsg">All right! Let\'s go sideways.</string>
+    <string name="title_location_info_panel">Location Info Panel</string>
+    <string name="title_put_location">Put Location</string>
+    <string name="title_send_location">Send Location</string>
+    <string name="title_type_filter">Type Filter Activity</string>
+    <string name="title_user_comment">User Comment</string>
+    <string name="title_activity_camera">Camer Activity</string>
+    <string name="title_activity_edituser">Edit User Activity</string>
+
+
+</resources>

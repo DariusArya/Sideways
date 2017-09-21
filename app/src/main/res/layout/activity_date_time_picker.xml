@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_date_time_picker"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    tools:context="com.innovathon.sideways.util.DateTimePicker"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:orientation="horizontal"
+    android:id="@+id/doe_panel"
+android:layout_margin="@dimen/margin_5"
+    android:layout_marginTop="50dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/date_of_event"
+        android:gravity="clip_vertical|clip_horizontal"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/date_of_event"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        android:clickable="false" />
+</LinearLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/calendarslashtimeview"
+    >
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/calendarView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:showWeekNumber="false"
+        android:dateTextAppearance="@style/TextAppearance.AppCompat" />
+
+    <TimePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timePicker"
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
+
+
+    <TextView
+        android:text="@string/donedatebuttext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/donedatebut"
+        android:clickable="true"
+        android:gravity="center"
+        android:textSize="@dimen/larger_text"
+        android:padding="7dp"
+        android:background="@drawable/backbuthighlighted" />
+
+    <TextView
+        android:text="Back to Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/backtodate"
+        android:clickable="true"
+        android:gravity="center"
+        android:textSize="@dimen/larger_text"
+        android:padding="7dp"
+        android:background="@drawable/backbuthighlighted" />
+
+</LinearLayout>

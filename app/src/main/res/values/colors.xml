@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryTransparent">#503F51B5</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black_overlay">#66000000</color>
+
+
+    <color name="activity_main_background">#D3D3D3</color>
+
+    <!-- edit_user_info layout -->
+    <color name="edit_user_info_header_background">#49738F</color>
+
+    <!-- put_location_type layout -->
+    <color name="put_location_type_background">#FEFEFE</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#FEFEFE</color>
+    <color name="grey">#FEFEFE</color>
+    <color name="green">#71A032</color>
+    <color name="light_green">#B3DB6D</color>
+    <color name="window_background">#aaafafaf</color>
+    <color name="light_blue">#3BB9FF</color>
+    <color name="blue">#ffffff</color>
+    <color name="sendlocation_selection">#E0EAF1</color>
+    <color name="launcherbg">#CCCCCC</color>
+    <color name="background_gray_transparent">#A0A0A0A0</color>
+    <color name="trans_blue">#05aafffa</color>
+
+
+    <color name="transparent">#faaaaaaa</color>
+    <color name="darkgreen">#00a000</color>
+
+    <color name="mapColor">#56ADDA</color>
+    <color name="iron">#CCCCCC</color>
+
+</resources>

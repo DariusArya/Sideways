@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="rescodegauthcalled">100</integer>
+    <integer name="USER_CHOICE_SIDEWAYS">3000</integer>
+    <integer name="REQ_CODE_FOR_CALLING_PHONE_VER_ACT">1434</integer>
+</resources>

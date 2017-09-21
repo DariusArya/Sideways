@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/white"
+    android:orientation="vertical"
+
+    tools:context="com.innovathon.sideways.util.PhoneNumberVerificationActivity"
+    tools:showIn="@layout/activity_phone_number_verification"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/instr1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|left"
+        android:layout_margin="30dp"
+        android:background="@drawable/backbut"
+        android:padding="10dp"
+        android:text="@string/instr0"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/phonenumberedit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/backbuthighlighted"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        android:padding="30dp"
+        android:selectAllOnFocus="true"
+        android:textAlignment="center"
+        android:textColor="@color/com_facebook_button_send_background_color"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="submit" />
+
+
+
+</LinearLayout>

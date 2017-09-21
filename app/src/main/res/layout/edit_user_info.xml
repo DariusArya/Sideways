@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.innovathon.sideways.main.MainActivity"
+    android:background="@color/put_location_type_background">
+
+        <LinearLayout
+            android:id="@+id/header_row1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/header_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
+                    android:background="@color/edit_user_info_header_background"
+                    android:text="Profile"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/edit_user_info_header_textsize"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row1"
+            android:layout_below="@+id/header_row1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginLeft="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginRight="@dimen/screen_margin_end"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                >
+
+                <TextView
+                    android:id="@+id/text_yob"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="@dimen/edit_user_textview_width"
+                    android:layout_height="@dimen/edit_user_textview_height"
+                    android:text="Year of birth"
+                    android:gravity="center_vertical|left"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/edit_user_info_text_textsize" />
+
+                <TextView
+                    android:id="@+id/yob"
+                    android:layout_toRightOf="@+id/text_yob"
+                    android:layout_toEndOf="@+id/text_yob"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_user_edittext_height"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    tools:textColor="@color/black" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row2"
+            android:layout_below="@+id/row1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginLeft="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginRight="@dimen/screen_margin_end"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/text_gender"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="@dimen/edit_user_textview_width"
+                    android:layout_height="@dimen/edit_user_textview_height"
+                    android:text="Gender"
+                    android:gravity="center_vertical|left"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_toRightOf="@+id/text_gender"
+                    android:layout_toEndOf="@+id/text_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_user_edittext_height"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row3"
+            android:layout_below="@+id/row2"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginLeft="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginRight="@dimen/screen_margin_end"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/text_email"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="@dimen/edit_user_textview_width"
+                    android:layout_height="@dimen/edit_user_textview_height"
+                    android:text="Email"
+                    android:gravity="center_vertical|left"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_toRightOf="@+id/text_email"
+                    android:layout_toEndOf="@+id/text_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_user_edittext_height"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row4"
+            android:layout_below="@+id/row3"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginLeft="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginRight="@dimen/screen_margin_end"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/text_phone"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="@dimen/edit_user_textview_width"
+                    android:layout_height="@dimen/edit_user_textview_height"
+                    android:text="Phone"
+                    android:gravity="center_vertical|left"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_toRightOf="@+id/text_phone"
+                    android:layout_toEndOf="@+id/text_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_user_edittext_height"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/header_row2"
+            android:layout_below="@+id/row4"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/header_rank"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
+                    android:background="@color/edit_user_info_header_background"
+                    android:text="Rank"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/edit_user_info_header_textsize"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentStart="true" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/row5"
+            android:layout_below="@+id/header_row2"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginLeft="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginRight="@dimen/screen_margin_end"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/row6"
+            android:layout_below="@+id/row5"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginLeft="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginRight="@dimen/screen_margin_end"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/text_reports"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="@dimen/edit_user_textview_width"
+                    android:layout_height="@dimen/edit_user_textview_height"
+                    android:text="Reports"
+                    android:gravity="center_vertical|left"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/reports"
+                    android:layout_toRightOf="@+id/text_reports"
+                    android:layout_toEndOf="@+id/text_reports"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_user_edittext_height"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/row7"
+            android:layout_below="@+id/row6"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginLeft="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginRight="@dimen/screen_margin_end"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/text_points"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="@dimen/edit_user_textview_width"
+                    android:layout_height="@dimen/edit_user_textview_height"
+                    android:text="Points"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical|left"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/points"
+                    android:layout_toRightOf="@+id/text_points"
+                    android:layout_toEndOf="@+id/text_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_user_edittext_height"
+                    android:textSize="@dimen/edit_user_info_text_textsize"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/row8"
+            android:layout_below="@+id/row7"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginLeft="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginRight="@dimen/screen_margin_end"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row9"
+            android:layout_below="@+id/row8"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginLeft="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginRight="@dimen/screen_margin_end"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+                <Button
+                    android:id="@+id/delete_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete Account"
+                    android:layout_alignParentStart="true" />
+
+            </RelativeLayout>
+        </LinearLayout>
+</RelativeLayout>
