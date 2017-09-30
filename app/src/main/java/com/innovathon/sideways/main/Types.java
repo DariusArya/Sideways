@@ -13,16 +13,16 @@ public class Types
     public enum locationTypes
     {
 
-        item1("Hazard",    R.drawable.ic_2_1_hazard,     0, 6,  "hazard"),
-        item2("Crowd",     R.drawable.ic_2_2_crowd,      7, 9,  "crowd"),
-        item3("Police",    R.drawable.ic_2_3_police,    10, 11, "police"),
-        item4("Parking",   R.drawable.ic_2_9_parking,   12, 14, "parking"),
-        item5("Trail",     R.drawable.ic_2_5_trails,    15, 19, "trail"),
-        item6("Place",     R.drawable.ic_2_6_place,     20, 23, "places"),
-        item7("Transport", R.drawable.ic_2_7_transport, 24, 26, "transport"),
-        item8("Vendor",    R.drawable.ic_2_8_vendor,    27, 30, "vendor"),
+        item1("Roadside",   R.drawable.ic_roadside_main_48dp,     0, 3,  "roadside"),
+        item2("Hazard",     R.drawable.ic_hazard_main_48dp,      4, 6,  "hazard"),
+        item3("Place",      R.drawable.ic_place_main_48dp,    7, 8, "place"),
+        item4("Food",       R.drawable.ic_food_main_48dp,   9, 10, "food"),
+//        item5("Trail",     R.drawable.ic_2_5_trails,    15, 19, "trail"),
+//        item6("Place",     R.drawable.ic_2_6_place,     20, 23, "places"),
+//        item7("Transport", R.drawable.ic_2_7_transport, 24, 26, "transport"),
+//        item8("Vendor",    R.drawable.ic_2_8_vendor,    27, 30, "vendor"),
 
-        special_item1("Meeting", android.R.drawable.sym_contact_card, 31,31, "meeting"),
+//        special_item1("Meeting", android.R.drawable.sym_contact_card, 31,31, "meeting"),
 
         BEST_LAST_KNOWN(  "", R.drawable.ic_2_10_none,  0 , 0, "best last known"),
         CURR_GPS_LOCATION(  "", R.drawable.ic_2_10_none,  0 , 0, "current gps location"),
@@ -77,52 +77,64 @@ public class Types
     /*----------------------------------------------*/
     public enum subTypes
     {
-        //0 - Hazard
-        HOLE(           "Pothole",      R.drawable.ic_hazard_pothole,       "pothole",      R.drawable.ic_marker_hazard_pothole, 3),
-        CLOSURE(        "Path Closed",  R.drawable.ic_hazard_closure,       "closed" ,      R.drawable.ic_marker_hazard_closure, 3),
-        CONSTRUCTION(   "Construction", R.drawable.ic_hazard_construction,  "construction", R.drawable.ic_marker_hazard_construction, 3),
-        FLOODING(       "Flooding",     R.drawable.ic_hazard_flooding,      "flooding",     R.drawable.ic_marker_hazard_flooding, 3),
-        WASTE(          "Waste",        R.drawable.ic_hazard_birdwaste,     "waste",        R.drawable.ic_marker_hazard_birdwaste, 3),
-        ANIMAL(         "Dead Animal",  R.drawable.ic_hazard_deadbird,      "animal",       R.drawable.ic_marker_hazard_deadbird, 3),
-        SPILL(          "Spill",        R.drawable.ic_hazard_spill,         "spill",        R.drawable.ic_marker_hazard_spill, 3),
+        //0 - Roadside
+        PLAZA(           "Travel Plaza", R.drawable.ic_roadside_travelplaza_48dp,       "travel plaza",      R.drawable.ic_roadside_marker_travelplaza_48dp, 3),
+        PARKING(         "Parking",      R.drawable.ic_roadside_parking_48dp,            "Parking",          R.drawable.ic_roadside_marker_parking_48dp, 3),
+        CARWASH(         "Carwash",      R.drawable.ic_roadside_carwash_48dp,            "Carwash",          R.drawable.ic_roadside_marker_carwash_48dp, 3),
+        GASSTATION(      "Gas Station",  R.drawable.ic_roadside_gasstation_48dp,         "gas station",      R.drawable.ic_roadside_marker_gasstation_48dp,3),
+        //4 - Hazard
+        ACCIDENT(         "Accident",    R.drawable.ic_hazard_accident_48dp,             "accident",         R.drawable.ic_hazard_marker_accident2_48dp,3),
+
+//        HOLE(           "Pothole",      R.drawable.ic_hazard_pothole,       "pothole",      R.drawable.ic_marker_hazard_pothole, 3),
+        CONSTRUCTION(   "Construction", R.drawable.ic_hazard_construction_48dp,  "construction", R.drawable.ic_hazard_marker_construction_48dp, 3),
+        CLOSURE(        "Path Closed",  R.drawable.ic_hazard_pathclosed_48dp,            "closed" ,           R.drawable.ic_hazard_marker_pathclosed_48dp,3),
+
+        //7 - Places
+        SITE(           "Historic Site",    R.drawable.ic_place_historic_48dp,   "historic", R.drawable.ic_place_marker_historic_48dp, 3),
+        BATHROOM(       "Bathroom",         R.drawable.ic_place_bathroom_48dp,   "bathroom", R.drawable.ic_place_marker_bathroom_48dp, 3),
+
+        //9 - FOOD
+        FOODTRUCK(      "Food Truck",   R.drawable.ic_food_truck_48dp,     "truck",        R.drawable.ic_food_marker_truck_48dp, 3),
+//        FOOD(           "Food",         R.drawable.ic_vendor_food,          "food",         R.drawable.ic_marker_vendor_food, 3),
+        ICECREAM(       "Ice Cream",    R.drawable.ic_food_icecream_48dp,      "icecream",     R.drawable.ic_food_marker_icecream_48dp, 3),
+//        GIFT(           "Gift Shop",    R.drawable.ic_vendor_giftshop,      "gift",         R.drawable.ic_marker_vendor_giftshop, 3),
+
+
+//        CHARGING(       "Charging Station", R.drawable.ic_place_charging,       "charging", R.drawable.ic_marker_place_charging, 3),
+//        WIFI(           "Wifi",             R.drawable.ic_place_wifi,           "wifi",     R.drawable.ic_marker_place_wifi, 3),
+
+//        FLOODING(       "Flooding",     R.drawable.ic_hazard_flooding,      "flooding",     R.drawable.ic_marker_hazard_flooding, 3),
+//        WASTE(          "Waste",        R.drawable.ic_hazard_birdwaste,     "waste",        R.drawable.ic_marker_hazard_birdwaste, 3),
+//        ANIMAL(         "Dead Animal",  R.drawable.ic_hazard_deadbird,      "animal",       R.drawable.ic_marker_hazard_deadbird, 3),
+//        SPILL(          "Spill",        R.drawable.ic_hazard_spill,         "spill",        R.drawable.ic_marker_hazard_spill, 3),
 
         //7 - Crowd
-        MODERATE(       "Moderately Busy",  R.drawable.ic_crowd_busy1,      "mbusy",        R.drawable.ic_marker_crowd_busy1, 3),
-        VERY(           "Very Busy",        R.drawable.ic_crowd_busy2,      "vbusy",        R.drawable.ic_marker_crowd_busy2, 3),
-        PROTEST(        "Protest",          R.drawable.ic_crowd_protest,    "protest",      R.drawable.ic_marker_crowd_protest, 3),
+//        MODERATE(       "Moderately Busy",  R.drawable.ic_crowd_busy1,      "mbusy",        R.drawable.ic_marker_crowd_busy1, 3),
+//        VERY(           "Very Busy",        R.drawable.ic_crowd_busy2,      "vbusy",        R.drawable.ic_marker_crowd_busy2, 3),
+//        PROTEST(        "Protest",          R.drawable.ic_crowd_protest,    "protest",      R.drawable.ic_marker_crowd_protest, 3),
+//
+//        //10 - Police
+//        CAR(            "Police Car",   R.drawable.ic_police_copcar,        "car",          R.drawable.ic_marker_police_copcar, 3),
+//        POLICE(         "Police",       R.drawable.ic_2_3_police,           "cop",          R.drawable.ic_marker_police_copstanding, 3),
+//
+//        //12 - Parking
+//        HOURLY(         "Hourly",       R.drawable.ic_parking_hourly,       "hourly",       R.drawable.ic_marker_parking_hourly, 3),
+//        PRIVATE(        "Paid Private", R.drawable.ic_parking_private,      "private",      R.drawable.ic_marker_parking_private, 3),
+//        STREET(         "Street",       R.drawable.ic_parking_street,       "street",       R.drawable.ic_marker_parking_street, 3),
+//
+//        //15 - Trails
+//        VIEW(           "Great View",   R.drawable.ic_trails_greatview,     "view",         R.drawable.ic_marker_trails_greatview, 3),
+//        LAKE(           "Lake",         R.drawable.ic_trails_lake,          "lake",         R.drawable.ic_marker_trails_lake, 3),
+//        HILLS(          "Hills",        R.drawable.ic_trails_hills,         "hills",        R.drawable.ic_marker_trails_hills, 3),
+//        WATER(          "Flooding",     R.drawable.ic_trails_flooding,      "flooding",     R.drawable.ic_marker_trails_flooding, 3),
+//        UNEVEN(         "Uneven Path",  R.drawable.ic_trails_uneven,        "uneven",       R.drawable.ic_marker_trails_uneven, 3),
+//
+//
+//        //24 - Transport
+//        BIKE(           "Bike Stand",   R.drawable.ic_transport_bike,       "bike",         R.drawable.ic_marker_transport_bike, 3),
+//        BUS(            "Bus Stop",     R.drawable.ic_transport_bus,        "bus",          R.drawable.ic_marker_transport_bus, 3),
+//        SUBWAY(         "Subway",       R.drawable.ic_transport_subway,     "subway",       R.drawable.ic_marker_transport_subway, 3),
 
-        //10 - Police
-        CAR(            "Police Car",   R.drawable.ic_police_copcar,        "car",          R.drawable.ic_marker_police_copcar, 3),
-        POLICE(         "Police",       R.drawable.ic_2_3_police,           "cop",          R.drawable.ic_marker_police_copstanding, 3),
-
-        //12 - Parking
-        HOURLY(         "Hourly",       R.drawable.ic_parking_hourly,       "hourly",       R.drawable.ic_marker_parking_hourly, 3),
-        PRIVATE(        "Paid Private", R.drawable.ic_parking_private,      "private",      R.drawable.ic_marker_parking_private, 3),
-        STREET(         "Street",       R.drawable.ic_parking_street,       "street",       R.drawable.ic_marker_parking_street, 3),
-
-        //15 - Trails
-        VIEW(           "Great View",   R.drawable.ic_trails_greatview,     "view",         R.drawable.ic_marker_trails_greatview, 3),
-        LAKE(           "Lake",         R.drawable.ic_trails_lake,          "lake",         R.drawable.ic_marker_trails_lake, 3),
-        HILLS(          "Hills",        R.drawable.ic_trails_hills,         "hills",        R.drawable.ic_marker_trails_hills, 3),
-        WATER(          "Flooding",     R.drawable.ic_trails_flooding,      "flooding",     R.drawable.ic_marker_trails_flooding, 3),
-        UNEVEN(         "Uneven Path",  R.drawable.ic_trails_uneven,        "uneven",       R.drawable.ic_marker_trails_uneven, 3),
-
-        //20 - Places
-        SITE(           "Historic Site",    R.drawable.ic_place_historicsite,   "historic", R.drawable.ic_marker_place_historicsite, 3),
-        BATHROOM(       "Bathroom",         R.drawable.ic_place_bathroom,       "bathroom", R.drawable.ic_marker_place_bathroom, 3),
-        CHARGING(       "Charging Station", R.drawable.ic_place_charging,       "charging", R.drawable.ic_marker_place_charging, 3),
-        WIFI(           "Wifi",             R.drawable.ic_place_wifi,           "wifi",     R.drawable.ic_marker_place_wifi, 3),
-
-        //24 - Transport
-        BIKE(           "Bike Stand",   R.drawable.ic_transport_bike,       "bike",         R.drawable.ic_marker_transport_bike, 3),
-        BUS(            "Bus Stop",     R.drawable.ic_transport_bus,        "bus",          R.drawable.ic_marker_transport_bus, 3),
-        SUBWAY(         "Subway",       R.drawable.ic_transport_subway,     "subway",       R.drawable.ic_marker_transport_subway, 3),
-
-        //27 - Vendor
-        FOODTRUCK(      "Food Truck",   R.drawable.ic_vendor_foodtruck,     "truck",        R.drawable.ic_marker_vendor_foodtruck, 3),
-        FOOD(           "Food",         R.drawable.ic_vendor_food,          "food",         R.drawable.ic_marker_vendor_food, 3),
-        ICECREAM(       "Ice Cream",    R.drawable.ic_vendor_icecream,      "icecream",     R.drawable.ic_marker_vendor_icecream, 3),
-        GIFT(           "Gift Shop",    R.drawable.ic_vendor_giftshop,      "gift",         R.drawable.ic_marker_vendor_giftshop, 3),
 
         //31
         BEST_LAST_KNOWN(    "", R.drawable.ic_2_10_none, "best last known",      -1, -1),

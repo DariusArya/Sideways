@@ -1,6 +1,9 @@
 package com.innovathon.sideways.util;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -20,13 +23,14 @@ public class PhoneNumberVerificationActivity extends ActivitySendingInfo
     int state = 0;
     EditText editBox = null;
     TextView mInstr = null;
+    private Activity mAct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_number_verification);
-
+        mAct = this;
         mContext = (Context) this;
         final EditText tv = (EditText) findViewById(R.id.phonenumberedit);
         String retrievedphonenumber = this.getPhoneNumber();
@@ -169,5 +173,28 @@ public class PhoneNumberVerificationActivity extends ActivitySendingInfo
             state = 1;
         }
 
+    }
+
+    public void onBackPressed()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(" Do you want to cancel? ");
+        builder.setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        mAct.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        dialog.cancel();
+                    }
+                }).show();
     }
 }

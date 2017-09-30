@@ -3,8 +3,11 @@ package com.innovathon.sideways.util;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
@@ -68,11 +71,13 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
     private String congratmessageForSendingEmailForVerification;
     private String congratmessageForCompletionOfRegistration;
     private String mPassword;
+    private Activity mAct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        mAct = this;
         setContentView(R.layout.activity_register_panel);
         mPrefName = getString(R.string.app_name);
         // Set up the login form.
@@ -577,5 +582,29 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
             showProgress(false);
         }
     }
+
+    public void onBackPressed()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(" Do you want to cancel? ");
+        builder.setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        mAct.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
 }
 
