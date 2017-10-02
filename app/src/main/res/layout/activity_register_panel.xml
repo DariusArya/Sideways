@@ -22,7 +22,7 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="359dp">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -39,6 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
+                    android:textAlignment="center"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:textSize="14sp" />
@@ -86,13 +87,25 @@
 
             <Button
                 android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:text="   Submit  "
+                />
 
         </LinearLayout>
     </ScrollView>
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Sideways"
+        android:textColor="#003162"
+        android:textStyle="bold"
+        android:textSize="50dp" />
 </LinearLayout>

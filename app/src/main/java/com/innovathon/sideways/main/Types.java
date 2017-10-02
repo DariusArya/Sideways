@@ -14,9 +14,9 @@ public class Types
     {
 
         item1("Roadside",   R.drawable.ic_roadside_main_48dp,     0, 3,  "roadside"),
-        item2("Hazard",     R.drawable.ic_hazard_main_48dp,      4, 6,  "hazard"),
-        item3("Place",      R.drawable.ic_place_main_48dp,    7, 8, "place"),
-        item4("Food",       R.drawable.ic_food_main_48dp,   9, 10, "food"),
+        item2("Hazard",     R.drawable.ic_hazard_main_48dp,      4, 9,  "hazard"),
+        item3("Place",      R.drawable.ic_place_main_48dp,    10, 14, "place"),
+        item4("Food",       R.drawable.ic_food_main_48dp,   15, 16, "food"),
 //        item5("Trail",     R.drawable.ic_2_5_trails,    15, 19, "trail"),
 //        item6("Place",     R.drawable.ic_2_6_place,     20, 23, "places"),
 //        item7("Transport", R.drawable.ic_2_7_transport, 24, 26, "transport"),
@@ -78,26 +78,33 @@ public class Types
     public enum subTypes
     {
         //0 - Roadside
-        PLAZA(           "Travel Plaza", R.drawable.ic_roadside_travelplaza_48dp,       "travel plaza",      R.drawable.ic_roadside_marker_travelplaza_48dp, 3),
-        PARKING(         "Parking",      R.drawable.ic_roadside_parking_48dp,            "Parking",          R.drawable.ic_roadside_marker_parking_48dp, 3),
-        CARWASH(         "Carwash",      R.drawable.ic_roadside_carwash_48dp,            "Carwash",          R.drawable.ic_roadside_marker_carwash_48dp, 3),
+        PLAZA(           "Travel Plaza", R.drawable.ic_roadside_travelplaza_48dp,       "travelplaza",      R.drawable.ic_roadside_marker_travelplaza_48dp, 3),
+        PARKING(         "Parking",      R.drawable.ic_roadside_parking_48dp,            "parking",          R.drawable.ic_roadside_marker_parking_48dp, 3),
+        CARWASH(         "Car Wash",      R.drawable.ic_roadside_carwash_48dp,            "carwash",          R.drawable.ic_roadside_marker_carwash_48dp, 3),
         GASSTATION(      "Gas Station",  R.drawable.ic_roadside_gasstation_48dp,         "gas station",      R.drawable.ic_roadside_marker_gasstation_48dp,3),
+		
         //4 - Hazard
-        ACCIDENT(         "Accident",    R.drawable.ic_hazard_accident_48dp,             "accident",         R.drawable.ic_hazard_marker_accident2_48dp,3),
+        ACCIDENT(       "Accident",		R.drawable.ic_hazard_accident_48dp,			"accident",		R.drawable.ic_hazard_marker_accident2_48dp,3),
+        CONSTRUCTION(   "Construction", R.drawable.ic_hazard_construction_48dp,		"construction", R.drawable.ic_hazard_marker_construction_48dp, 3),
+        CLOSURE(        "Path Closed",  R.drawable.ic_hazard_pathclosed_48dp,		"closed" ,		R.drawable.ic_hazard_marker_pathclosed_48dp,3),
+        POTHOLE(        "Pothole",		R.drawable.ic_hazard_pothhole_48dp,			"pothole" ,		R.drawable.ic_hazard_marker_pothhole_48dp,3),
+        FLOODING(       "Flooding",  	R.drawable.ic_hazard_flooding_48dp,			"flooding" ,	R.drawable.ic_hazard_marker_flooding_48dp,3),
+        WASTE(       	"Waste",  		R.drawable.ic_hazard_waste_48dp,			"waste" ,		R.drawable.ic_hazard_marker_waste_48dp,3),
+//      HOLE(           "Pothole",      R.drawable.ic_hazard_pothole,       "pothole",      R.drawable.ic_marker_hazard_pothole, 3),
 
-//        HOLE(           "Pothole",      R.drawable.ic_hazard_pothole,       "pothole",      R.drawable.ic_marker_hazard_pothole, 3),
-        CONSTRUCTION(   "Construction", R.drawable.ic_hazard_construction_48dp,  "construction", R.drawable.ic_hazard_marker_construction_48dp, 3),
-        CLOSURE(        "Path Closed",  R.drawable.ic_hazard_pathclosed_48dp,            "closed" ,           R.drawable.ic_hazard_marker_pathclosed_48dp,3),
 
         //7 - Places
-        SITE(           "Historic Site",    R.drawable.ic_place_historic_48dp,   "historic", R.drawable.ic_place_marker_historic_48dp, 3),
-        BATHROOM(       "Bathroom",         R.drawable.ic_place_bathroom_48dp,   "bathroom", R.drawable.ic_place_marker_bathroom_48dp, 3),
+        SITE(           "Historic Site",    R.drawable.ic_place_historic_48dp,	"historic", R.drawable.ic_place_marker_historic_48dp, 3),
+        CAMPING(		"Camping",         	R.drawable.ic_place_camping_48dp,   "camping",  R.drawable.ic_place_marker_camping_48dp, 3),
+        PARK(			"Park",         	R.drawable.ic_place_parks_48dp,   	"park",  	R.drawable.ic_place_marker_parks_48dp, 3),
+        TRAIL(			"Trail",         	R.drawable.ic_place_trail_48dp,   	"trail",  	R.drawable.ic_place_marker_trail_48dp, 3),
+        BATHROOM(       "Bathroom",         R.drawable.ic_place_bathroom_48dp,	"bathroom", R.drawable.ic_place_marker_bathroom_48dp, 3),
 
+		
         //9 - FOOD
-        FOODTRUCK(      "Food Truck",   R.drawable.ic_food_truck_48dp,     "truck",        R.drawable.ic_food_marker_truck_48dp, 3),
-//        FOOD(           "Food",         R.drawable.ic_vendor_food,          "food",         R.drawable.ic_marker_vendor_food, 3),
-        ICECREAM(       "Ice Cream",    R.drawable.ic_food_icecream_48dp,      "icecream",     R.drawable.ic_food_marker_icecream_48dp, 3),
-//        GIFT(           "Gift Shop",    R.drawable.ic_vendor_giftshop,      "gift",         R.drawable.ic_marker_vendor_giftshop, 3),
+        FOODTRUCK(      "Food Truck",	R.drawable.ic_food_truck_48dp,		"truck",	R.drawable.ic_food_marker_truck_48dp, 3),
+        ICECREAM(       "Ice Cream",    R.drawable.ic_food_icecream_48dp,	"icecream",	R.drawable.ic_food_marker_icecream_48dp, 3),
+
 
 
 //        CHARGING(       "Charging Station", R.drawable.ic_place_charging,       "charging", R.drawable.ic_marker_place_charging, 3),

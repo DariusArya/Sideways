@@ -9,16 +9,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.innovathon.sideways.main.Sideways"
-    android:background="#413f91"
+    android:background="#003162"
     >
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sideways_startup_icon"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="40dp"
         android:id="@+id/imageView" />
 
     <TextView
@@ -29,9 +29,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="122dp"
         android:text="Sideways"
-        android:textColor="#e0e0e0e0"
-        android:textSize="50dp"
-        android:textStyle="italic" />
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="50dp" />
 
 </RelativeLayout>
 

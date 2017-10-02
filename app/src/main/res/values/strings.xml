@@ -179,7 +179,7 @@
     <string name="sendverifcode">sendVerifCode.php</string>
     <string name="verifyemail">sendVerifTempPassword.php</string>
     <string name="registerphp">registerUser.php</string>
-    <string name="instr0">Please enter or verify your number:</string>
+    <string name="instr0">Please enter or verify your phone number</string>
     <string name="downloading_msg">Downloading...</string>
     <string name="thankyouforinput">Thank You !</string>
     <string name="google_maps_app_key">AIzaSyDNfio0ic2Y5XnCk1HsR1ti2nEjPEPRcc4</string>
@@ -219,9 +219,9 @@
     <string name="title_activity_register_panel">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Enter your email address.</string>
+    <string name="prompt_email">Enter your email address</string>
     <string name="prompt_password">Enter the temp password we have emailed you.</string>
-    <string name="action_sign_in">Submit</string>
+    <string name="action_sign_in">  Submit  </string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
