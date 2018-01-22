@@ -7,7 +7,7 @@ android {
         applicationId "com.innovathon.sideways"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 1
+        versionCode 9
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -30,7 +30,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile files('libs/scribejavaoauth.jar')
+
     compile files('libs/json-simple-1.1.1.jar')
     compile files('libs/jsoup-1.7.3.jar')
     compile files('libs/acra-4.5.0.jar')

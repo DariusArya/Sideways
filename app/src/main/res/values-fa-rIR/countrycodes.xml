@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="CountryCodes">
+    <item>	افغانستان	,	AF	,	4	</item>
+    <item>	آلبانی	,	AL	,	8	</item>
+    <item>	الجزایر	,	DZ	,	12	</item>
+    <item>	آندورا	,	AD	,	20	</item>
+    <item>	آنگولا	,	AO	,	24	</item>
+    <item>	قطب جنوب	,	AQ	,	10	</item>
+    <item>	آرژانتین	,	AR	,	32	</item>
+    <item>	ارمنستان	,	AM	,	51	</item>
+    <item>	آروبا	,	AW	,	533	</item>
+    <item>	استرالیا	,	AU	,	36	</item>
+    <item>	اتریش	,	AT	,	40	</item>
+    <item>	آذربایجان	,	AZ	,	31	</item>
+    <item>	بحرین	,	BH	,	48	</item>
+    <item>	بنگلادش	,	BD	,	50	</item>
+    <item>	باربادوس	,	BB	,	52	</item>
+    <item>	بلاروس	,	BY	,	112	</item>
+    <item>	بلژیک	,	BE	,	56	</item>
+    <item>	بلیز	,	BZ	,	84	</item>
+    <item>	بنین	,	BJ	,	204	</item>
+    <item>	بوتان	,	BT	,	64	</item>
+    <item>	بولیوی	,	BO	,	68	</item>
+    <item>	بوسنی و هرزگوین	,	BA	,	70	</item>
+    <item>	بوتسوانا	,	BW	,	72	</item>
+    <item>	برزیل	,	BR	,	76	</item>
+    <item>	جزایر ویرجین بریتانیا	,	VG	,	92	</item>
+    <item>	قلمرو اقیانوس هند بریتانیا	,	IO	,	86	</item>
+    <item>	برونئی دارالسلام	,	BN	,	96	</item>
+    <item>	بلغارستان	,	BG	,	100	</item>
+    <item>	بورکینافاسو	,	BF	,	854	</item>
+    <item>	بوروندی	,	BI	,	108	</item>
+    <item>	کامبوج	,	KH	,	116	</item>
+    <item>	کامرون	,	CM	,	120	</item>
+    <item>	کانادا	,	CA	,	124	</item>
+    <item>	کیپ ورد	,	CV	,	132	</item>
+    <item>	جزایر کیمن	,	KY	,	136	</item>
+    <item>	جمهوری آفریقای مرکزی	,	CF	,	140	</item>
+    <item>	چاد	,	TD	,	148	</item>
+    <item>	شیلی	,	CL	,	152	</item>
+    <item>	چين	,	CN	,	156	</item>
+    <item>	هنگ کنگ ، SAR چین	,	HK	,	344	</item>
+    <item>	ماکائو ، SAR چین	,	MO	,	446	</item>
+    <item>	جزیره کریسمس	,	CX	,	162	</item>
+    <item>	جزایر کوکوس (کایلینگ)	,	CC	,	166	</item>
+    <item>	کلمبیا	,	CO	,	170	</item>
+    <item>	کومور	,	KM	,	174	</item>
+    <item>	کنگو (برازاویل)	,	CG	,	178	</item>
+    <item>	کنگو ، (کینشاسا)	,	CD	,	180	</item>
+    <item>	جزایر کوک	,	CK	,	184	</item>
+    <item>	کاستاریکا	,	CR	,	188	</item>
+    <item>	ساحل عاج	,	CI	,	384	</item>
+    <item>	کرواسی	,	HR	,	191	</item>
+    <item>	کوبا	,	CU	,	192	</item>
+    <item>	قبرس	,	CY	,	196	</item>
+    <item>	جمهوری چک	,	CZ	,	203	</item>
+    <item>	دانمارک	,	DK	,	208	</item>
+    <item>	جیبوتی	,	DJ	,	262	</item>
+    <item>	دومینیکا	,	DM	,	212	</item>
+    <item>	جمهوری دومینیکن	,	DO	,	214	</item>
+    <item>	اکوادور	,	EC	,	218	</item>
+    <item>	مصر	,	EG	,	818	</item>
+    <item>	السالوادور	,	SV	,	222	</item>
+    <item>	گینه استوایی	,	GQ	,	226	</item>
+    <item>	اریتره	,	ER	,	232	</item>
+    <item>	استونی	,	EE	,	233	</item>
+    <item>	اتیوپی	,	ET	,	231	</item>
+    <item>	جزایر فالکلند (مالویناس)	,	FK	,	238	</item>
+    <item>	جزایر فارو	,	FO	,	234	</item>
+    <item>	فیجی	,	FJ	,	242	</item>
+    <item>	فنلاند	,	FI	,	246	</item>
+    <item>	فرانسه	,	FR	,	250	</item>
+    <item>	گویان فرانسه	,	GF	,	254	</item>
+    <item>	پلینزی فرانسه	,	PF	,	258	</item>
+    <item>	مناطق جنوبی فرانسه	,	TF	,	260	</item>
+    <item>	گابن	,	GA	,	266	</item>
+    <item>	گامبیا	,	GM	,	270	</item>
+    <item>	جورجیا	,	GE	,	268	</item>
+    <item>	آلمان	,	DE	,	276	</item>
+    <item>	غنا	,	GH	,	288	</item>
+    <item>	جبل الطارق	,	GI	,	292	</item>
+    <item>	یونان	,	GR	,	300	</item>
+    <item>	گرینلند	,	GL	,	304	</item>
+    <item>	گرانادا	,	GD	,	308	</item>
+    <item>	گوادلوپ	,	GP	,	312	</item>
+    <item>	گوام	,	GU	,	316	</item>
+    <item>	گواتمالا	,	GT	,	320	</item>
+    <item>	گورنسی	,	GG	,	831	</item>
+    <item>	گینه	,	GN	,	324	</item>
+    <item>	گینه بیسائو	,	GW	,	624	</item>
+    <item>	گایانا	,	GY	,	328	</item>
+    <item>	هائیتی	,	HT	,	332	</item>
+    <item>	جزایر Heard و Mcdonald	,	HM	,	334	</item>
+    <item>	مقدس (ایالت واتیکان)	,	VA	,	336	</item>
+    <item>	هندوراس	,	HN	,	340	</item>
+    <item>	مجارستان	,	HU	,	348	</item>
+    <item>	ایسلند	,	IS	,	352	</item>
+    <item>	هندوستان	,	IN	,	356	</item>
+    <item>	اندونزی	,	ID	,	360	</item>
+    <item>	ایران (جمهوری اسلامی	,	IR	,	364	</item>
+    <item>	عراق	,	IQ	,	368	</item>
+    <item>	ایرلند	,	IE	,	372	</item>
+    <item>	جزیره من	,	IM	,	833	</item>
+    <item>	اسرائيل	,	IL	,	376	</item>
+    <item>	ایتالیا	,	IT	,	380	</item>
+    <item>	جامائیکا	,	JM	,	388	</item>
+    <item>	ژاپن	,	JP	,	392	</item>
+    <item>	جرسی	,	JE	,	832	</item>
+    <item>	اردن	,	JO	,	400	</item>
+    <item>	قزاقستان	,	KZ	,	398	</item>
+    <item>	کنیا	,	KE	,	404	</item>
+    <item>	کیریباتی	,	KI	,	296	</item>
+    <item>	کره شمالی	,	KP	,	408	</item>
+    <item>	کره جنوبی	,	KR	,	410	</item>
+    <item>	کویت	,	KW	,	414	</item>
+    <item>	قرقیزستان	,	KG	,	417	</item>
+    <item>	لائوس PDR	,	LA	,	418	</item>
+    <item>	لتونی	,	LV	,	428	</item>
+    <item>	لبنان	,	LB	,	422	</item>
+    <item>	لسوتو	,	LS	,	426	</item>
+    <item>	لیبریا	,	LR	,	430	</item>
+    <item>	لیبی	,	LY	,	434	</item>
+    <item>	لیختن اشتاین	,	LI	,	438	</item>
+    <item>	لیتوانی	,	LT	,	440	</item>
+    <item>	لوکزامبورگ	,	LU	,	442	</item>
+    <item>	جمهوری مقدونیه	,	MK	,	807	</item>
+    <item>	ماداگاسکار	,	MG	,	450	</item>
+    <item>	مالاوی	,	MW	,	454	</item>
+    <item>	مالزی	,	MY	,	458	</item>
+    <item>	مالدیو	,	MV	,	462	</item>
+    <item>	مالزی	,	ML	,	466	</item>
+    <item>	مالت	,	MT	,	470	</item>
+    <item>	جزایر مارشال	,	MH	,	584	</item>
+    <item>	مارتینیک	,	MQ	,	474	</item>
+    <item>	موریتانی	,	MR	,	478	</item>
+    <item>	موریس	,	MU	,	480	</item>
+    <item>	مایوت	,	YT	,	175	</item>
+    <item>	مکزیک	,	MX	,	484	</item>
+    <item>	میکرونزی، ایالات فدرال	,	FM	,	583	</item>
+    <item>	مولداوی	,	MD	,	498	</item>
+    <item>	موناکو	,	MC	,	492	</item>
+    <item>	مغولستان	,	MN	,	496	</item>
+    <item>	مونته نگرو	,	ME	,	499	</item>
+    <item>	مونتسرات	,	MS	,	500	</item>
+    <item>	مراکش	,	MA	,	504	</item>
+    <item>	موزامبیک	,	MZ	,	508	</item>
+    <item>	میانمار	,	MM	,	104	</item>
+    <item>	نامیبیا	,	NA	,	516	</item>
+    <item>	نائورو	,	NR	,	520	</item>
+    <item>	نپال	,	NP	,	524	</item>
+    <item>	هلند	,	NL	,	528	</item>
+    <item>	آنتیل هلند	,	AN	,	530	</item>
+    <item>	کالدونیای جدید	,	NC	,	540	</item>
+    <item>	نیوزلند	,	NZ	,	554	</item>
+    <item>	نیکاراگوئه	,	NI	,	558	</item>
+    <item>	نیجر	,	NE	,	562	</item>
+    <item>	نیجریه	,	NG	,	566	</item>
+    <item>	نیو	,	NU	,	570	</item>
+    <item>	جزیره نورفولک	,	NF	,	574	</item>
+    <item>	جزایر ماریانای شمالی	,	MP	,	580	</item>
+    <item>	نروژ	,	NO	,	578	</item>
+    <item>	عمان	,	OM	,	512	</item>
+    <item>	پاکستان	,	PK	,	586	</item>
+    <item>	پالائو	,	PW	,	585	</item>
+    <item>	قلمرو فلسطین	,	PS	,	275	</item>
+    <item>	پاناما	,	PA	,	591	</item>
+    <item>	پاپوآ گینه نو	,	PG	,	598	</item>
+    <item>	پاراگوئه	,	PY	,	600	</item>
+    <item>	پرو	,	PE	,	604	</item>
+    <item>	فیلیپین	,	PH	,	608	</item>
+    <item>	پیتکرن	,	PN	,	612	</item>
+    <item>	لهستان	,	PL	,	616	</item>
+    <item>	کشور پرتغال	,	PT	,	620	</item>
+    <item>	پورتوریکو	,	PR	,	630	</item>
+    <item>	قطر	,	QA	,	634	</item>
+    <item>	تجدید دیدار	,	RE	,	638	</item>
+    <item>	رومانی	,	RO	,	642	</item>
+    <item>	فدراسیون روسیه	,	RU	,	643	</item>
+    <item>	رواندا	,	RW	,	646	</item>
+    <item>	سن بارتلمی	,	BL	,	652	</item>
+    <item>	سنت هلن	,	SH	,	654	</item>
+    <item>	سنت کیتس و نویس	,	KN	,	659	</item>
+    <item>	سنت لوسیا	,	LC	,	662	</item>
+    <item>	سنت مارتین (قسمت فرانسوی)	,	MF	,	663	</item>
+    <item>	سنت پیر و میکلون	,	PM	,	666	</item>
+    <item>	سنت وینسنت و گرنادین	,	VC	,	670	</item>
+    <item>	ساموآ	,	WS	,	882	</item>
+    <item>	سان مارینو	,	SM	,	674	</item>
+    <item>	سائوتومه و پرنسیپه	,	ST	,	678	</item>
+    <item>	عربستان سعودی	,	SA	,	682	</item>
+    <item>	سنگال	,	SN	,	686	</item>
+    <item>	صربستان	,	RS	,	688	</item>
+    <item>	سیشل	,	SC	,	690	</item>
+    <item>	سیرا لئون	,	SL	,	694	</item>
+    <item>	سنگاپور	,	SG	,	702	</item>
+    <item>	اسلواکی	,	SK	,	703	</item>
+    <item>	اسلوونی	,	SI	,	705	</item>
+    <item>	جزایر سلیمان	,	SB	,	90	</item>
+    <item>	سومالی	,	SO	,	706	</item>
+    <item>	آفریقای جنوبی	,	ZA	,	710	</item>
+    <item>	جنوب گرجستان و جزایر ساندویچ جنوبی	,	GS	,	239	</item>
+    <item>	سودان جنوبی	,	SS	,	728	</item>
+    <item>	اسپانیا	,	ES	,	724	</item>
+    <item>	سری لانکا	,	LK	,	144	</item>
+    <item>	سودان	,	SD	,	736	</item>
+    <item>	سورینام	,	SR	,	740	</item>
+    <item>	جزایر اسلوبرد و جان ماین	,	SJ	,	744	</item>
+    <item>	سوازیلند	,	SZ	,	748	</item>
+    <item>	سوئد	,	SE	,	752	</item>
+    <item>	سوئیس	,	CH	,	756	</item>
+    <item>	جمهوری سوریه (سوریه)	,	SY	,	760	</item>
+    <item>	تایوان ، جمهوری چین	,	TW	,	158	</item>
+    <item>	تاجیکستان	,	TJ	,	762	</item>
+    <item>	تانزانیا ، جمهوری متحده	,	TZ	,	834	</item>
+    <item>	تایلند	,	TH	,	764	</item>
+    <item>	تیمور لست	,	TL	,	626	</item>
+    <item>	رفتن	,	TG	,	768	</item>
+    <item>	توکلو	,	TK	,	772	</item>
+    <item>	تونگا	,	TO	,	776	</item>
+    <item>	ترینیداد و توباگو	,	TT	,	780	</item>
+    <item>	تونس	,	TN	,	788	</item>
+    <item>	بوقلمون	,	TR	,	792	</item>
+    <item>	ترکمنستان	,	TM	,	795	</item>
+    <item>	جزایر ترکس و کایکوس	,	TC	,	796	</item>
+    <item>	توووالو	,	TV	,	798	</item>
+    <item>	اوگاندا	,	UG	,	800	</item>
+    <item>	اوکراین	,	UA	,	804	</item>
+    <item>	امارات متحده عربی	,	AE	,	784	</item>
+    <item>	انگلستان	,	GB	,	826	</item>
+    <item>	ایالات متحده آمریکا	,	US	,	840	</item>
+    <item>	جزایر کوچک جزایر کوچک ایالات متحده	,	UM	,	581	</item>
+    <item>	اروگوئه	,	UY	,	858	</item>
+    <item>	ازبکستان	,	UZ	,	860	</item>
+    <item>	وانواتو	,	VU	,	548	</item>
+    <item>	ونزوئلا (جمهوری بولیواری)	,	VE	,	862	</item>
+    <item>	ویتنام	,	VN	,	704	</item>
+    <item>	جزایر ویرجین، ایالات متحده	,	VI	,	850	</item>
+    <item>	جزایر والیس و فونتانا	,	WF	,	876	</item>
+    <item>	صحرای غربی	,	EH	,	732	</item>
+    <item>	یمن	,	YE	,	887	</item>
+    <item>	زامبیا	,	ZM	,	894	</item>
+    <item>	زیمبابوه	,	ZW	,	716	</item>
+    </string-array>
+    </resources>

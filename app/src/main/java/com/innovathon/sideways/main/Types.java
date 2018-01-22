@@ -1,5 +1,7 @@
 package com.innovathon.sideways.main;
 
+import android.content.Context;
+
 import com.innovathon.sideways.R;
 
 import java.util.HashMap;
@@ -10,13 +12,14 @@ import java.util.Map;
  */
 public class Types
 {
+    public static Context con;
     public enum locationTypes
     {
 
-        item1("Roadside",   R.drawable.ic_roadside_main_48dp,     0, 3,  "roadside"),
-        item2("Hazard",     R.drawable.ic_hazard_main_48dp,      4, 9,  "hazard"),
-        item3("Place",      R.drawable.ic_place_main_48dp,    10, 14, "place"),
-        item4("Food",       R.drawable.ic_food_main_48dp,   15, 16, "food"),
+        item1("Roadside",   R.drawable.ic_roadside_main_48dp,     0, 3,  getString(R.string.road_side)),
+        item2("Hazard",     R.drawable.ic_hazard_main_48dp,      4, 9,  getString(R.string.hazard)),
+        item3("Place",      R.drawable.ic_place_main_48dp,    10, 14, getString(R.string.place)),
+        item4("Food",       R.drawable.ic_food_main_48dp,   15, 16, getString(R.string.food)),
 //        item5("Trail",     R.drawable.ic_2_5_trails,    15, 19, "trail"),
 //        item6("Place",     R.drawable.ic_2_6_place,     20, 23, "places"),
 //        item7("Transport", R.drawable.ic_2_7_transport, 24, 26, "transport"),
@@ -29,6 +32,11 @@ public class Types
         FROM_OUR_DATABASE(  "", R.drawable.ic_2_10_none,  0 , 0, "from out database"),
         USER_ADDED_TMP(     "", R.drawable.ic_2_10_none,  0 , 0, "user added temp"),
         FROM_GOOGLE_SEARCH( "", R.drawable.ic_2_10_none,  0, 0 , "from google search");
+
+        private static String getString(int id)
+        {
+           return con.getString(id);
+        }
 
 
         private String fullName;
@@ -183,7 +191,7 @@ public class Types
         public int image() {return image;}
         public String identifier() {return identifier;}
         public int micon(){ return marker_icon;}
-        public int image_res_ind(){ return this.image_resolution_indicator; };
+        public int image_res_ind(){ return this.image_resolution_indicator; }
     }
 
 //    /* Crowd */

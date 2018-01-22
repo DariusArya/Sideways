@@ -121,7 +121,7 @@ public class EditUserInfoActivity extends ActivitySendingInfo
     private void getUserDataFromOurDatabase()
     {
 
-        String point = MainActivity.dbserver + "getUserStatistics.php";
+        String point = getResources().getString(R.string.dbserverpath) + "getUserStatistics.php";
         HashMap<String, String> param = new HashMap<String, String>();
         param.put("`"+getString(R.string.AL)+"`","'"+User.id+'@'+User.id_type + "'");
 

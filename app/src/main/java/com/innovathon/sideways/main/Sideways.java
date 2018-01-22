@@ -34,7 +34,8 @@ public class Sideways extends Activity
     {
         setContentView(R.layout.activity_sideways_launcher);
         mThisAct = this;
-        mThisContext = (Context) this;
+        mThisContext = this;
+        Types.con = mThisContext;
         super.onCreate(savedInstanceState);
 //        clearAllPreferences();
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.innovathon.sideways">
+    package="com.innovathon.sideways"
+    android:installLocation="auto"
+    >
 
     <!-- client -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="com.forkit.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.innovathon.sideways.permission.MAPS_RECEIVE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -21,6 +23,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>  <!-- I don't wanna read sms, but Eric Tressler's phone throw Security Exception saying you don't have permission to read sms, !@#$? -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:name=".main.MyApplication"
@@ -49,7 +53,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="@string/api_key" />
 
         <activity
         android:name=".main.MainActivity"
@@ -86,10 +90,6 @@
         <activity
             android:name=".main.EditUserInfoActivity"
             android:label="@string/title_activity_edituser" />
-
-        <activity
-            android:name=".util.LoginPanel"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <activity
             android:name=".util.WebAct"

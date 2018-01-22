@@ -25,42 +25,40 @@ import java.util.HashMap;
 /**
  * Created by Payman on 8/7/2016.
  */
-public class ActivitySendingInfo extends FragmentActivity
-{
+public class ActivitySendingInfo extends FragmentActivity {
     private boolean m_bPostedSuccessfully = false;
     private boolean m_bErrorOcurredInPosting = false;
 
-    public void showProgDialogBox()
-    {
+    public void showProgDialogBox() {
 
     }
-    public void hideProgDialogBox()
-    {
+
+    public void hideProgDialogBox() {
 
     }
-    public boolean postInfo(final HashMap<String,String> locInfo, final String postUrl, final String congratMessage)
+
+    public boolean postInfo(final HashMap<String, String> locInfo, final String postUrl, final String congratMessage)
     {
         final String[] submission_string_holder = new String[1];
         m_bPostedSuccessfully = false;
         Activity act = null;
-        if (MainActivity.mActStack != null && !MainActivity.mActStack.isEmpty() )
+        if (MainActivity.mActStack != null && !MainActivity.mActStack.isEmpty())
             act = MainActivity.mActStack.firstElement();
 
         DefaultAsyncProcess Poster = new DefaultAsyncProcess(act)
         {
             String message = "";
+
             @Override
-            protected void onPreExecute()
-            {
+            protected void onPreExecute() {
                 showProgDialogBox();
             }
 
             @Override
-            protected void onPostExecute(Void result)
-            {
+            protected void onPostExecute(Void result) {
                 hideProgDialogBox();
                 Intent intent = getIntent();
-                while(MainActivity.mActStack.size() > 1)
+                while (MainActivity.mActStack.size() > 1)
                     MainActivity.mActStack.pop().finish();
 
                 doThisForMessage(message);
@@ -84,8 +82,8 @@ public class ActivitySendingInfo extends FragmentActivity
                         m_bPostedSuccessfully = true;
                         MarkerManager.getMarkerManager().removeAll();
                         if (act != null)
-                        act.runOnUiThread(new Runnable()
-                            {
+                            act.runOnUiThread(
+                                    new Runnable() {
                                 @Override
                                 public void run()
                                 {
@@ -94,24 +92,21 @@ public class ActivitySendingInfo extends FragmentActivity
                                         Toast.makeText(act, congratMessage, Toast.LENGTH_LONG).show();
 //                                      Toast.makeText(act, mylog.getAbsolutePath(), Toast.LENGTH_LONG).show();
                                     }
+
                                     if (act instanceof MainActivity)
                                     {
-                                        ((MainActivity)act).refreshNow();
+                                        ((MainActivity) act).refreshNow();
                                     }
                                 }
                             });
-
-
 
 
                     }
                     else
                     {
                         m_bErrorOcurredInPosting = true;
-                        prompt(act,"Unfortunately there was a problem: " + msg);
+                        prompt(act, "Unfortunately there was a problem: " + msg);
                     }
-
-
                 }
                 catch (Exception e)
                 {
@@ -123,13 +118,9 @@ public class ActivitySendingInfo extends FragmentActivity
         };
 
 
-
-
-
         Poster.launch();
 
         int counter = 0;
-
 
 
         return true;
@@ -137,30 +128,22 @@ public class ActivitySendingInfo extends FragmentActivity
     }
 
     @SuppressLint("LongLogTag")
-    protected void prompt(Context act, String msg)
-    {
-        try
-        {
+    protected void prompt(Context act, String msg) {
+        try {
             Looper.prepare();
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             Log.w("Loop prepare threw and exception", e.getMessage());
         }
         if (act != null && msg != null && !msg.isEmpty())
             Toast.makeText(act, msg, Toast.LENGTH_LONG).show();
     }
 
-    public String postJSONString(String data, String target) throws Exception
-    {
+    public String postJSONString(String data, String target) throws Exception {
         URL endpoint = new URL(target);
         HttpURLConnection urlc = (HttpURLConnection) endpoint.openConnection();
-        try
-        {
+        try {
             urlc.setRequestMethod("POST");
-        }
-        catch (ProtocolException e)
-        {
+        } catch (ProtocolException e) {
             throw new Exception("Shouldn't happen: HttpURLConnection doesn't support POST??", e);
         }
 
@@ -176,8 +159,7 @@ public class ActivitySendingInfo extends FragmentActivity
         DataOutputStream out = new DataOutputStream(urlc.getOutputStream());
 //        String charset = "UTF-8";
 //        Writer writer = null;
-        try
-        {
+        try {
 
             String content = "json=" + data;
             out.writeBytes(content);
@@ -187,8 +169,7 @@ public class ActivitySendingInfo extends FragmentActivity
             BufferedReader in = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
             String line = "";
             String msg = "";
-            while((line=in.readLine())!=null)
-            {
+            while ((line = in.readLine()) != null) {
                 msg += line;
             }
             in.close();
@@ -197,18 +178,13 @@ public class ActivitySendingInfo extends FragmentActivity
             return msg;
 
 
-
-
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             throw new Exception("IOException while posting data", e);
         }
 
     }
 
-    public void doThisForMessage(String msg)
-    {
+    public void doThisForMessage(String msg) {
 
     }
 

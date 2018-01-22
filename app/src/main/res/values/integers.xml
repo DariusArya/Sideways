@@ -4,4 +4,12 @@
     <integer name="rescodegauthcalled">100</integer>
     <integer name="USER_CHOICE_SIDEWAYS">3000</integer>
     <integer name="REQ_CODE_FOR_CALLING_PHONE_VER_ACT">1434</integer>
+    <integer name="time_to_show">500</integer>
+    <integer name="time_to_hide">3500</integer>
+    <integer name="note_time_in_ms">2500</integer>
+    <integer name="time_to_fire_progressbar">300</integer>
+    <integer name="gps_time_out">60000</integer>
+    <integer name="default_radius_meter">300</integer>
+    <integer name="default_zoom_level">14</integer>
+    <integer name="time_interval">2500</integer>
 </resources>

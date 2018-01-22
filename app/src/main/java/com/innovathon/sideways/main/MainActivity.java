@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.location.Criteria;
 import android.location.Location;
@@ -17,7 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Looper;
-import android.support.design.widget.FloatingActionButton;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.Display;
@@ -53,7 +54,6 @@ import com.innovathon.sideways.R;
 import com.innovathon.sideways.util.ActivitySendingInfo;
 import com.innovathon.sideways.util.DefaultAsyncProcess;
 import com.innovathon.sideways.util.GoGetter;
-import com.innovathon.sideways.util.LoginPanel;
 import com.innovathon.sideways.util.MarkerManager;
 import com.innovathon.sideways.util.TouchableWrapper;
 import com.innovathon.sideways.util.User;
@@ -65,9 +65,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.PriorityQueue;
@@ -79,7 +77,7 @@ import static com.innovathon.sideways.util.MarkerManager.CRITERIATYPE.PLACETYPE;
 
 /******************************************************
  * Main Activity for Sideways, v 1.0
- * <p>
+ *
  * *
  ******************************************************/
 
@@ -93,31 +91,25 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
         LocationListener
 
 {
-    private static final long TIME_TO_SHOW = 500;
-    private static final long TIME_TO_HIDE = 3500;
+    private long TIME_TO_HIDE ;
     private GoGetter gogetter;
-    public static boolean m_bMovingMode = false;
-    public static final int note_time_in_ms = 2500;
-    public static final int TYPE_FILTER_AND_SETTING_INITIATED = 5001;
+    private static boolean m_bMovingMode = false;
+    private static final int TYPE_FILTER_AND_SETTING_INITIATED = 5001;
     public static Stack<Activity> mActStack = new Stack<Activity>();
-    public static String dbserver = "http://www.innovathon.com/pathz/";
-    long timetofireprogressbar = 300, gpstimeout = 60000;
-    private final static double mDefaultRadiusInMeters = 300;
-    private double mRadiusMeters = 300;
-    private String urlreaddb = dbserver + "getLocs.php";
-    private int defaultzoom_level = 14;
-    private Long mTimeInterval = 2500L;
-    private int mCurZoomLevel = defaultzoom_level;
+    private int note_time_in_ms;// = getResources().getInteger(R.integer.note_time_in_ms);
+    public String dbserver;// = getResources().getString(R.string.dbserverpath);
+    long timetofireprogressbar;// = getResources().getInteger(R.integer.time_to_fire_progressbar);
+    long gpstimeout;// = getResources().getInteger(R.integer.gps_time_out);
+    private double mDefaultRadiusInMeters;// = getResources().getInteger(R.integer.default_radius_meter);
+    private double mRadiusMeters;// = mDefaultRadiusInMeters;
+    private String urlreaddb;// = dbserver + "getLocs.php";
+    private int defaultzoom_level;// = getResources().getInteger(R.integer.default_zoom_level);
+    private Long mTimeInterval;// = (long) getResources().getInteger(R.integer.time_interval);
+    private int mCurZoomLevel;// = defaultzoom_level;
 
-    private boolean bPostedSuccessfully;
-    private boolean bErrorOcurredInPosting;
-
-
-    private Timer timer, mTimer, timeouttimer;
+    private Timer timer = null, mTimer, timeouttimer = null;
 
     private Timer mTimeOutTimer;
-    View contentView = null;
-    private MapFragment mapFragment;
     private GoogleMap mMap;
     private MarkerManager mMarkerManager;
     private GoogleApiClient mGoogleApiClient;
@@ -125,23 +117,14 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
     private LatLng mCurLoc = null;
 
     Activity thisact, act;
-    private GoogleApiClient client;
     private LocationRequest mLocationRequest;
     private boolean bLatestLocationObtained;
-    private String mLastUpdateTime = null;
     private boolean curLocationUpdated;
     private Context mContext;
-    private String mUsername;
-    private String mId;
+//    private String mId;
     private boolean loggedIn = false;
     private String app_name;
-    private String mAuth_method, mPrefName, mPrefKey;
-
-    private Boolean mbFirstTimeRegistration = null;
-    private String mPostUserInfoUrl;
-    private boolean[] mAuthorizationInProgress = new boolean[]{false};
-    private boolean[] mLogInVerififiedCont = new boolean[]{false};
-    ;
+    private String mPrefName;
     private SharedPreferences.Editor editor;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -149,8 +132,23 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
      */
     private GoogleApiClient client2;
     private Animation slide_down, slide_up;
-    private boolean mUp = true;
     private View mToolbar = null;
+
+    private void init()
+    {
+        Resources res = getResources();
+        TIME_TO_HIDE            = res.getInteger(R.integer.time_to_hide);
+        note_time_in_ms         = res.getInteger(R.integer.note_time_in_ms);
+        dbserver                = res.getString(R.string.dbserverpath);
+        timetofireprogressbar   = res.getInteger(R.integer.time_to_fire_progressbar);
+        gpstimeout              = res.getInteger(R.integer.gps_time_out);
+        mDefaultRadiusInMeters  = res.getInteger(R.integer.default_radius_meter);
+        mRadiusMeters           = mDefaultRadiusInMeters;
+        urlreaddb               = dbserver + "getLocs.php";
+        defaultzoom_level       = res.getInteger(R.integer.default_zoom_level);
+        mTimeInterval           = (long) res.getInteger(R.integer.time_interval);
+        mCurZoomLevel           = defaultzoom_level;
+    }
 
     public Double[] getViewingArea()
     {
@@ -170,8 +168,6 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 
                 done[0] = true;
             }
-
-            ;
 
         });
 
@@ -230,7 +226,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
     }
 
 
-    public enum AppStatus {
+    private enum AppStatus {
         None,
         LocationEntryRequested
     }
@@ -254,6 +250,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
     protected void onCreate(Bundle savedInstanceState)
     {
         Log.i("Sideways","MainPanel created");
+        init();
         MapsInitializer.initialize(getApplicationContext());
         mMarkerManager = MarkerManager.getMarkerManager();
         mActStack.push(this);
@@ -261,19 +258,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
         urlreaddb += getString(R.string.readscriptname);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mPostUserInfoUrl = getString(R.string.baseurl) + getString(R.string.postuserinfourl);
         mContext = this;
-        FloatingActionButton email_log = (FloatingActionButton) findViewById(R.id.fab);
-        email_log.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                sendLogCatEmail();
-
-            }
-        });
         // Put Location button (this is an imageview)
         app_name = getString(R.string.app_name);
         mPrefName = app_name;
@@ -283,13 +268,13 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
         // See https://g.co/AppIndexing/AndroidStudio for more information.
 
         Intent intent = getIntent();
-        if (intent.hasExtra(getString(R.string.isloggedintag)) && intent.getBooleanExtra(getString(R.string.isloggedintag), false)) {
+        if (intent.hasExtra(getString(R.string.isloggedintag)) && intent.getBooleanExtra(getString(R.string.isloggedintag), false))
+        {
             String profile = intent.getStringExtra(getResources().getString(R.string.profile_label));
             if (profile != null)
                 getUserIdAndUserName(profile);
         }
 
-        mbFirstTimeRegistration = !intent.getBooleanExtra("ALREADY_REGISTERED", false);
 
         mMarkerManager.map = null;
 
@@ -321,7 +306,8 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
         });
 
         slide_up   = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
-        slide_up.setAnimationListener(new Animation.AnimationListener() {
+        slide_up.setAnimationListener(new Animation.AnimationListener()
+        {
             @Override
             public void onAnimationStart(Animation animation)
             {
@@ -330,13 +316,13 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
             }
 
             @Override
-            public void onAnimationEnd(Animation animation) {
-
+            public void onAnimationEnd(Animation animation)
+            {
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {
-
+            public void onAnimationRepeat(Animation animation)
+            {
             }
         });
 
@@ -347,14 +333,11 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
     {
         ImageView imageViewPutLocation = (ImageView) findViewById(R.id.put_marker);
 
-        imageViewPutLocation.setOnClickListener(new View.OnClickListener() {
+        imageViewPutLocation.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                if (User.id_type != null && User.id_type.equals("guest"))
-                {
-                    alertUser("Doh!", getString(R.string.guest_warning_message2));
-                    return;
-                }
+            public void onClick(View view)
+            {
                 mStatus = AppStatus.LocationEntryRequested;
                 mTimer = new Timer();
                 TimerTask task = new TimerTask()
@@ -427,7 +410,6 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
             @Override
             public void onClick(View v)
             {
-                Log.i("INFO", "moving mode button is clicked.");
                 flipMovingMode();
             }
         });
@@ -436,7 +418,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 //
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 //        SupportMapFragment mapFragment = (R.layoutSupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);  // this would fire onmapready
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -496,7 +478,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
                     startLocationUpdates(mTimeInterval);
                     if (mNoteMan == null)
                     {
-                        Log.i("INFO","Launching NoteMan for the first time.");
+//                        Log.i("INFO","Launching NoteMan for the first time.");
                         mNoteMan = createNoteMan();
                         mNoteMan.launch();
                     }
@@ -528,7 +510,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
     final HashSet<String> notes = new HashSet<String>();
     private DefaultAsyncProcess createNoteMan()
     {
-        return new DefaultAsyncProcess((MainActivity) act)
+        return new DefaultAsyncProcess(act)
         {
             @Override
             protected void doTheThing()
@@ -537,15 +519,6 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 
                 while (m_bMovingMode)
                 {
-                    if (noteque == null)
-                        Log.i("INFO", "noteque is null");
-                    else
-                        if (noteque.isEmpty())
-                            Log.i("INFO", "noteque isn't null, but it's empty.");
-
-
-                        Log.i("INFO", "noteque has " + noteque.size()+ " size.");
-
                     while (noteque != null && !noteque.isEmpty() && m_bMovingMode)
                     {
                         act.runOnUiThread(new Runnable()
@@ -562,7 +535,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
                                     if (!notes.contains(note))
                                     {
                                         notes.add(note);
-                                        showPopupNote(note, 10, 100, thisact);
+                                        showPopupNote(note, thisact);
                                     }
                                     note = noteque.poll();
                                 }
@@ -585,33 +558,16 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
         };
     }
 
-    private void showPopupNote(String note, int x, int y, final Activity context)
+    private void showPopupNote(String note, final Activity context)
     {
-        // inflate the popup_layout.xml;
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = layoutInflater.inflate(R.layout.note_view, viewGroup);
-//        LinearLayout  layout = new LinearLayout(this);
-//        layout.setBackgroundResource(R.color.background_gray_transparent);
 
         TextView  tv = (TextView) layout.findViewById(R.id.place_name);
-        // set the TextView properties like color, size etc
-//        tv.setTextColor(Color.RED);
-//        tv.setTextSize(15);
-
-//        tv.setGravity(Gravity.CENTER_VERTICAL);
 
         // set the text you want to show in  Toast
         tv.setText(note);
-
-//        ImageView   img=new ImageView(this);
-//
-//        // give the drawble resource for the ImageView
-//        img.setImageResource(R.drawable.myimage);
-//
-//        // add both the Views TextView and ImageView in layout
-//        layout.addView(img);
-//        layout.addView(tv);
 
         Toast toast=new Toast(thisact); //context is object of Context write "this" if you are an Activity
         // Set The layout as Toast View
@@ -620,72 +576,11 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
         // Position your toast here toast position is 50 dp from top you can give any integral value
         toast.setGravity(Gravity.TOP, 0, 100);
         toast.show();
-//        int popupWidth = 200;
-//        int popupHeight = 150;
-//        // inflate the popup_layout.xml;
-//        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
-//        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View layout = layoutInflater.inflate(R.layout.note_view, viewGroup);
-//        // createing the popup window
-//        final PopupWindow popup = new PopupWindow(context);
-//        popup.setContentView(layout);
-//
-//        popup.setWidth(popupWidth);
-//        popup.setHeight(popupHeight);
-//        popup.setFocusable(true);
-//        popup.setBackgroundDrawable(new BitmapDrawable());
-//        ((TextView) layout.findViewById(R.id.place_name)).setText(note.toCharArray(), 0, note.length());
-//        contentView = findViewById(android.R.id.content);
-//        if (contentView != null)
-//            popup.showAsDropDown(contentView ,x,y);
-
     }
 
-    private void alertUser(String title, String msg)
-    {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
-
-        // set title
-        alertDialogBuilder.setTitle(title);
-
-        // set dialog message
-        alertDialogBuilder
-                .setMessage(msg)
-                .setCancelable(true)
-                .setPositiveButton("Sign In", new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        runAuthorizationApp(false);
-                        dialog.cancel();
-                    }
-                }).setNegativeButton("Never mind", new DialogInterface.OnClickListener()
-            {
-                public void onClick(DialogInterface dialog, int id)
-                {
-                    dialog.cancel();
-                }
-            });
-        ;
-
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        // show it
-        alertDialog.show();
-    }
 
     static final int requestCode1 = 10001;
 
-    public void runAuthorizationApp(boolean ifguestletit) {
-
-        if (!mAuthorizationInProgress[0])
-            mAuthorizationInProgress[0] = true;
-
-        Intent authorizationIntent = new Intent(thisact, LoginPanel.class);
-        authorizationIntent.putExtra("IFGUESTLETIT", ifguestletit);
-        startActivityForResult(authorizationIntent, requestCode1);
-    }
 
 
     private SharedPreferences.Editor getEditor()
@@ -701,7 +596,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 
     public void getUserIdAndUserName(String profile)
     {
-        UserManager userManager = UserManager.getTheOnlyUserManager();
+        UserManager userManager = UserManager.getTheOnlyUserManager(this);
         if (profile != null)
         {
             JSONParser parser = new JSONParser();
@@ -714,9 +609,8 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
                 String gender = (String) userprofile.get(getString(R.string.gender_label));
                 String yob = (String) userprofile.get(getString(R.string.yob_label));
                 String name = (String) userprofile.get(getString(R.string.name_lable));
-                String id = (String) userprofile.get("id");
 
-                User.id = id;
+                User.id = (String) userprofile.get("id");
                 User.age = age;
                 User.gender = gender;
                 User.yob = yob;
@@ -732,50 +626,9 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
         }
 
         app_name = getString(R.string.app_name);
-//        mAuth_method = app_name + "_" + getResources().getString(R.string.auth_method).toUpperCase();
         mPrefName = app_name;
-//        mPrefKey = mPrefName + "_" + "FB_ACCESS_CODE";
-//
-//        SharedPreferences settings;
-//        settings = mContext.getSharedPreferences(mPrefName, Context.MODE_PRIVATE); //1
-//
-//        String authMethod = settings.getString(mAuth_method, null);
-//
-//        if (authMethod == null) {
-//            User.name = "root";
-//            User.id = null;
-//            User.id_type = null;
-//        }
-//        else
-//        if (authMethod.equals("facebook")) {
-//            User.id = settings.getString(app_name + "@" + "id", null);
-//            User.name = settings.getString(app_name + "@" + "name", null);
-//            User.id_type = "facebook";
-//        }
-//        else
-//        if (authMethod.equals("google")) {
-//            User.id = settings.getString(app_name + "@" + "id", null);
-//            User.name = settings.getString(app_name + "@" + "name", null);
-//            User.id_type = "google";
-//        }
-//        else
-//        if (authMethod.equals("guest")) {
-//            User.id = settings.getString(app_name + "@" + "id", null);
-//            User.name = settings.getString(app_name + "@" + "name", null);
-//            User.id_type = "guest";
-//        }
-
-
     }
 
-    public String getUsername() {
-
-        return null;
-    }
-
-    public String getId() {
-        return mId;
-    }
 
     @Override
     protected void onResume()
@@ -869,19 +722,10 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
         if (mLocationRequest == null)
             mLocationRequest = new LocationRequest();
 
-        if (NUM_UPDATES > 0)
-            mLocationRequest.setNumUpdates(NUM_UPDATES);
+        mLocationRequest.setNumUpdates(NUM_UPDATES);
 
-        if (NUM_UPDATES == 1)
-        {
-            mLocationRequest.setInterval(SINGLE_UPDATE_INTERVAL);
-            mLocationRequest.setFastestInterval(SINGLE_UPDATE_INTERVAL);
-        }
-        else
-        {
-            mLocationRequest.setInterval(INTERVAL);
-            mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
-        }
+        mLocationRequest.setInterval(SINGLE_UPDATE_INTERVAL);
+        mLocationRequest.setFastestInterval(SINGLE_UPDATE_INTERVAL);
 
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
@@ -898,52 +742,11 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 //				 bestLastKnown = getUsersInputForLocation();
         }
         catch (Exception e)
-        {}
+        {
+            e.printStackTrace();
+        }
 
         showLocation(bestLastKnown, Types.locationTypes.BEST_LAST_KNOWN, true, defaultzoom_level);
-
-//        if (mbFirstTimeRegistration)
-//        {
-//            String name = User.name.trim();
-//            String firstname = "";
-//            String lastname = "";
-//            if (name != null && !name.isEmpty()) {
-//                String[] fl = name.split("\\s+");
-//                if (fl.length == 1) {
-//                    firstname = fl[0];
-//                } else {
-//                    firstname = fl[0];
-//                    lastname = fl[fl.length - 1];
-//                }
-//
-//            }
-//
-//            HashMap<String, String> userInfo = new HashMap<String, String>();
-//            userInfo.put("`" + getString(R.string.LO) + "`", bestLastKnown.longitude + "");
-//            userInfo.put("`" + getString(R.string.LA) + "`", bestLastKnown.latitude + "");
-//            userInfo.put("`" + getString(R.string.YOB) + "`", User.yob + "");
-//            userInfo.put("`" + getString(R.string.SEX) + "`", "'" + User.gender + "'");
-//            userInfo.put("`" + getString(R.string.PHONE) + "`", "'" + User.phonenumber + "'");
-//            userInfo.put("`" + getString(R.string.EMAIL) + "`", "'" + User.email + "'");
-//            userInfo.put("`" + getString(R.string.AL) + "`", "'" + User.id + '@' + User.id_type + "'");
-//            userInfo.put("`" + getString(R.string.PASSWORD) + "`", "'" + User.password + "'");
-//            userInfo.put("`" + getString(R.string.FIRSTNAME) + "`", "'" + firstname + "'");
-//            userInfo.put("`" + getString(R.string.LASTNAME) + "`", "'" + lastname + "'");
-//            userInfo.put("`" + getString(R.string.MILES) + "`", User.miles + "");
-//            userInfo.put("`" + getString(R.string.REPORTS) + "`", User.reports + "");
-//            userInfo.put("`" + getString(R.string.POINTS) + "`", User.points + "");
-//            // insert into `innovath_test`.`users`
-//            // (`id`, `timestamp`, `latitude`, `longitude`, `yob`, `gender`, `phone`, `email`, `alias`, `password`, `firstname`, `lastname`, `miles`, `reports`, `points`)   values
-//            // (123456, CURRENT_TIMESTAMP, 39.0275403, -77.10652985, 1973, 'male', 123456789, 'paymaneATgmail.com', 'aaa', 'a', 'Ardeshir', 'Eftekharzadeh', 0, 0, 0);
-//
-//            if (!postInfo(userInfo, mPostUserInfoUrl, ""))
-//            {
-//                Toast.makeText(getApplicationContext(), "Couldn't register you in our database", Toast.LENGTH_LONG).show();
-//            }
-//
-//
-//        }
-
     }
 
     private void showLocation(LatLng loc, Types.locationTypes loctype, boolean moveTo, int zoomLevel)
@@ -954,19 +757,15 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
             return;
         }
 
-        boolean ifExistsLeaveInPlace = false;
-        mMarkerManager.addMarker(loc, loctype, ifExistsLeaveInPlace);
+        mMarkerManager.addMarker(loc, loctype, false);
         if (moveTo)
         {
-//            sbar = (MyAutoCompleteTextView) findViewById(R.id.searchView1);
             mMap.animateCamera(CameraUpdateFactory.zoomTo(zoomLevel), 2000, null);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, zoomLevel));
             mMap.getUiSettings().setZoomControlsEnabled(true);
             mMap.getUiSettings().setZoomGesturesEnabled(true);
         }
 
-//        if (mScaleBar == null)
-//            addScaleBar();
         refreshNow();
     }
 
@@ -1016,8 +815,6 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
         Log.d(TAG, "Location update started ..............: ");
     }
 
-    private String types = "restaurant|bar|grill";
-
     public void refreshNow()
     {
 //        if (mScaleBar != null)
@@ -1033,6 +830,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 //		clearTempMarkers();
         Double[] viewingarea = getViewingArea();
         double delta_lat = viewingarea[0] - viewingarea[2];
+        String types = "restaurant|bar|grill";
         if (delta_lat == 0)
         {
             if (gogetter == null || !gogetter.isRunning())
@@ -1043,7 +841,6 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
                     gogetter = new GoGetter(thisact, urlreaddb, searchcenter.latitude, searchcenter.longitude, types, null, mRadiusMeters);
                     gogetter.launch();
                 }
-                return;
             }
         }
         else
@@ -1056,7 +853,6 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
             {
                 gogetter = new GoGetter(this, urlreaddb, center_lat, center_lon, types, null, mRadiusMeters);
                 gogetter.launch();
-                return;
             }
 
         }
@@ -1097,8 +893,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
                 }
 
             }
-            LatLng ret = new LatLng(lastKnown.getLatitude(), lastKnown.getLongitude());
-            return ret;
+            return new LatLng(lastKnown.getLatitude(), lastKnown.getLongitude());
         }
 
         return null;
@@ -1144,46 +939,19 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
         hideToolbarAfterDelay();
     }
 
-    DefaultAsyncProcess delayedshow ;
-
-
-    public class ShowProcess extends DefaultAsyncProcess
-    {
-        public ShowProcess(Activity act)
-        {
-            super(act);
-        }
-        @Override
-        protected void doTheThing()
-        {
-            try
-            {
-                Thread.sleep(TIME_TO_SHOW);
-                showToolbar();
-            }
-            catch(Exception e)
-            {
-
-            }
-        }
-    };
 
     private void showToolbar()
     {
         mToolbar.startAnimation(slide_up);
     }
 
-    private void showToolbarAfterDelay()
-    {
-        delayedshow = new ShowProcess(this);
-        delayedshow.launch();
-    }
+
 
     DefaultAsyncProcess delayedhide;
 
-    public class HideProcess extends DefaultAsyncProcess
+    private class HideProcess extends DefaultAsyncProcess
     {
-       public HideProcess(Activity act_)
+       HideProcess(Activity act_)
        {
            super(act_);
        }
@@ -1197,10 +965,10 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
             }
             catch(Exception e)
             {
-
+                e.printStackTrace();
             }
         }
-    };
+    }
 
 
     private void hideToolbar()
@@ -1224,8 +992,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
                 .addOnConnectionFailedListener(this)
                 .build();
 
-        if (mGoogleApiClient != null)
-            mGoogleApiClient.connect();
+        mGoogleApiClient.connect();
 
         mMarkerManager.map = this.mMap;
         mMarkerManager.mainAct = this;
@@ -1243,13 +1010,13 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
     }
 
     @Override
-    public void onConnectionSuspended(int i) {
-
+    public void onConnectionSuspended(int i)
+    {
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult)
+    {
     }
 
     public void prompt(String msg) {
@@ -1261,7 +1028,6 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 
     public Point getScreenDimensions()
     {
-//        hSbar = sbar.getMeasuredHeight();
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -1279,22 +1045,8 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 
 //		adjustHeight(screenHeight*factor);
         // **
-        float scaleBarDim = screenWidth / 4;
-//        mScaleBar.setSize(scaleBarDim, scaleBarDim);
 
-        int margin = 63;
-        int xDes = (int) (screenWidth / 2 - scaleBarDim / 2);
-        int yDes = (this.screenHeight - margin);
-        Point desPoint = new Point(xDes, yDes);
-//        if (mScaleBar == null)
-//            addScaleBar();
-//
-//        if (mScaleBar != null)
-//        {
-//            mScaleBar.setSize(scaleBarDim,1);
-//            mScaleBar.setPosition(desPoint);
-//            mScaleBar.invalidate();
-//        }
+
         refreshNow();
         return ret;
     }
@@ -1319,11 +1071,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 
     }
 
-
-    public void closeLocIOPanel() {
-    }
-
-    public void openLocIOPanel(int topOfThePanel, String name, LatLng location, LatLng newposition, Marker marker, MarkerManager.InfoType infoType)
+    public void openLocIOPanel(LatLng location, Marker marker, MarkerManager.InfoType infoType)
     {
         if (infoType == MarkerManager.InfoType.OUTPUT)
         {
@@ -1372,7 +1120,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
             intent.putExtra(lontag, mCurLoc.longitude);
             intent.putExtra(lattag, mCurLoc.latitude);
             if (loggedIn)
-                intent.putExtra(getResources().getString(R.string.user_id_label), mId);
+                intent.putExtra(getResources().getString(R.string.user_id_label), User.id);
             startActivity(intent);
         }
 
@@ -1393,7 +1141,7 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
                 ArrayList<Types.locationTypes> chosenTypes = new ArrayList<Types.locationTypes>();
                 for (Types.locationTypes type : Types.locationTypes.values())
                 {
-                    if (chosenOnes.contains(type.identifier()))
+                    if (chosenOnes != null && chosenOnes.contains(type.identifier()))
                     {
                         chosenTypes.add(type);
                     }
@@ -1405,46 +1153,10 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 
             case (requestCode1):
             {
-                mAuthorizationInProgress[0] = false;
-                System.out.println();
-                String login_method_indicator_tag = getResources().getString(R.string.login_method_indicator_tag);
-                String login_method;
-                if (data == null || (login_method = data.getStringExtra(login_method_indicator_tag)) == null)
-                {
-//                            alertUser("But!","If you register as guest you can't post locations\n"+
-//                                    "Please register properly.");
-                    return;
-                }
-
-                if (login_method.equals("FACEBOOK"))
-                {
-//                    Sideways.logUserInViaFacebook(data, getEditor(), getResources());
-                    UserManager.getTheOnlyUserManager().facebooklogin();
-                }
-                else if (login_method.equals("GOOGLE"))
-                {
-                    if (!data.getBooleanExtra(getString(R.string.google_signin_success), false))
-                    {
-//                                alertUser("But!","If you register as guest you can't post locations\n"+
-//                                          "Please register properly.");
-                        return;
-                    }
-                    else
-                    {
-//                        Launcher.logUserInViaGoogle(data, getEditor(), getResources());
-                        UserManager.getTheOnlyUserManager().googlelogin();
-                    }
-                }
-                mLogInVerififiedCont[0] = true;
                 getUserIdAndUserName(null);
             }
         }
 
-    }
-
-
-    private void handleUserChoiceOfTypes()
-    {
     }
 
     private void promptWithAlertDlgBox(String message)
@@ -1469,7 +1181,6 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 
     public void updateMyLocation(Location location)
     {
-        mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
         mCurLoc = new LatLng(location.getLatitude(), location.getLongitude());
         if (!curLocationUpdated)
         {
@@ -1492,6 +1203,9 @@ public class MainActivity extends ActivitySendingInfo implements TouchableWrappe
 
     }
 
-    //  Auto hiding the toolbar
+    public void onBackPressed()
+    {
+        moveTaskToBack(true);
+    }
 
 }

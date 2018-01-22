@@ -46,7 +46,7 @@ public class LocationInfoPanel extends ActivitySendingInfo
         String locExtraInfo = getIntent().getStringExtra("EXTRA_INFO");
         JSONParser parser = new JSONParser();
         mBaseUrl = getString(R.string.baseurl);
-        mUpdateUrl+= mBaseUrl + getString(R.string.updatescriptname);
+        mUpdateUrl = mBaseUrl + getString(R.string.updatescriptname);
 
         try
         {
@@ -158,7 +158,7 @@ public class LocationInfoPanel extends ActivitySendingInfo
         }
 
 
-        ((ImageView)findViewById(R.id.receive_location_notthere_image)).setOnClickListener(
+        findViewById(R.id.receive_location_notthere_image).setOnClickListener(
                 new View.OnClickListener()
                 {
                     @Override
@@ -169,7 +169,7 @@ public class LocationInfoPanel extends ActivitySendingInfo
                 }
         );
 
-        ((ImageView)findViewById(R.id.receive_location_thumpup_image)).setOnClickListener(
+        findViewById(R.id.receive_location_thumpup_image).setOnClickListener(
                 new View.OnClickListener()
                 {
                     @Override

@@ -15,53 +15,49 @@ import com.innovathon.sideways.R;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class WebAct extends Activity
-{
+public class WebAct extends Activity {
 
 
-    private WebView mWebView;
     static protected String mUrl;
-    public static void setUrl(String url)
-    {
-        mUrl = url;
-    }
-    public WebAct()
-    {
+    static WebViewClient mWebViewClient = null;
+    private WebView mWebView;
+
+    public WebAct() {
 
     }
-    public WebAct(String url)
-    {
+
+    public WebAct(String url) {
         mUrl = url;
+    }
+
+    public static void setUrl(String url) {
+        mUrl = url;
+    }
+
+    public static void setWebViewClient(Browser webviewclient) {
+        mWebViewClient = webviewclient;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Intent intent = getIntent();
-        if (intent != null)
-        {
-            if (intent.getExtras() != null)
-            {
+        if (intent != null) {
+            if (intent.getExtras() != null) {
                 mUrl = intent.getStringExtra("URL");
             }
-        }
-        else
-        {
-            if (savedInstanceState != null)
-            {
+        } else {
+            if (savedInstanceState != null) {
                 mUrl = savedInstanceState.getString("URL");
             }
         }
         setContentView(R.layout.activity_web);
         mWebView = (WebView) findViewById(R.id.web_view);
-        if (mWebViewClient instanceof Browser)
-        {
+        if (mWebViewClient instanceof Browser) {
             ((Browser) mWebViewClient).setWebAct(this);
         }
-        if (mUrl != null)
-        {
+        if (mUrl != null) {
             mWebView.setWebChromeClient(new WebChromeClient());
             mWebView.setWebViewClient(mWebViewClient);
             mWebView.getSettings().setLoadsImagesAutomatically(true);
@@ -71,14 +67,5 @@ public class WebAct extends Activity
         }
 
 
-
-
-    }
-    static WebViewClient mWebViewClient = null;
-
-
-    public static void setWebViewClient(Browser webviewclient)
-    {
-        mWebViewClient = webviewclient;
     }
 }

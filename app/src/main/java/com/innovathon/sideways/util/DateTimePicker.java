@@ -19,31 +19,30 @@ import java.util.Locale;
 public class DateTimePicker extends AppCompatActivity
 {
 
-    View mTimePicker;
-    CalendarView mDatePicker;
-    TextView mBack2Date ;
     final static private int CHOOSING_DATE = 1;
     final static private int CHOOSING_TIME = 2;
+    View mTimePicker;
+    CalendarView mDatePicker;
+    TextView mBack2Date;
     Activity thisact;
 
     int mState = CHOOSING_DATE;
+    String mDateOfEvent, mTimeOfEvent;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_time_picker);
 
         thisact = this;
 
         mTimePicker = findViewById(R.id.timePicker);
-        if (mTimePicker != null)
-        {
+        if (mTimePicker != null) {
             mTimePicker.setVisibility(View.INVISIBLE);
         }
 
         mBack2Date = (TextView) findViewById(R.id.backtodate);
-        if (mBack2Date != null)
-        {
+        if (mBack2Date != null) {
             mBack2Date.setOnClickListener(new View.OnClickListener()
             {
                 @Override
@@ -58,32 +57,27 @@ public class DateTimePicker extends AppCompatActivity
             mBack2Date.setVisibility(View.INVISIBLE);
         }
 
-        mDatePicker = (CalendarView) findViewById(R.id.calendarView) ;
+        mDatePicker = (CalendarView) findViewById(R.id.calendarView);
         initializeCalendar();
 //        Calendar c = Calendar.getInstance();
 //        c.setTimeInMillis(System.currentTimeMillis());
 //        mDatePicker.setDate(System.currentTimeMillis(), true, true);
-        View donebut =  findViewById(R.id.donedatebut);
+        View donebut = findViewById(R.id.donedatebut);
         if (donebut != null)
-            donebut.setOnClickListener(new View.OnClickListener()
-            {
+            donebut.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v)
-                {
-                  if (mState == CHOOSING_DATE)
-                      handleDoneDateButton();
-                   if (mState == CHOOSING_TIME)
-                      handleDone();
+                public void onClick(View v) {
+                    if (mState == CHOOSING_DATE)
+                        handleDoneDateButton();
+                    if (mState == CHOOSING_TIME)
+                        handleDone();
                 }
             });
     }
 
-    private void handleDone()
-    {
+    private void handleDone() {
         finish();
     }
-
-    String mDateOfEvent, mTimeOfEvent;
 
     public void handleDoneDateButton()
     {
@@ -108,23 +102,20 @@ public class DateTimePicker extends AppCompatActivity
         donebut.setText("Done.");
 
 
-
     }
 
-    private String getSelectedDate()
-    {
+    private String getSelectedDate() {
         long selecteddate = mDatePicker.getDate();
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(selecteddate);
-        Date d  = c.getTime();
+        Date d = c.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("MMM/dd/YYYY", Locale.US);
         sdf.setCalendar(c);
         String strDate = sdf.format(d);
         return strDate;
     }
 
-    public void initializeCalendar()
-    {
+    public void initializeCalendar() {
 
         // sets whether to show the week number.
         mDatePicker.setShowWeekNumber(false);
@@ -153,13 +144,12 @@ public class DateTimePicker extends AppCompatActivity
         mDatePicker.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             //show the selected date as a toast
             @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int day)
-            {
-                Toast.makeText(getApplicationContext(), day + "/" + (month+1) + "/" + year, Toast.LENGTH_LONG).show();
+            public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
+                Toast.makeText(getApplicationContext(), day + "/" + (month + 1) + "/" + year, Toast.LENGTH_LONG).show();
             }
         });
 
-       
+
     }
 
 }

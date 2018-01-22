@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">Sideways</string>
+    <string name="api_key"> AIzaSyDMSleTdYdVZz4A6IEwMucQhF-a6qYbeoQ </string>
     <string name="title_activity_sideways_launcher">Sideways</string>
-    <string name="api_key">AIzaSyAiYjtkKiAQB8jS61_RJNYdGSlg-6zXhDM</string>
     <string name="google_client_id"> 258316913445-a98c8c58t2jlu6cul14g74bv5eokv7ki.apps.googleusercontent.com </string>
     <string name="google_client_secret"> dYFnDmssQWEdRZym1doF_tG1 </string>
-    <string name="google_maps_key"> AIzaSyBhUfsA8Fg-IsyqT-U5t_LLPJVe97oJ0YQ </string>
     <string name="facebook_app_id">1636995126597011</string>
     <string name="facebook_app_secret">ce21fbe28f36faee91438d12535c8843</string>
     <string name="title_activity_web">WebAct</string>
@@ -179,7 +178,12 @@
     <string name="sendverifcode">sendVerifCode.php</string>
     <string name="verifyemail">sendVerifTempPassword.php</string>
     <string name="registerphp">registerUser.php</string>
-    <string name="instr0">Please enter or verify your phone number</string>
+    <string name="readscriptname">getLocs.php</string>
+    <string name="writescriptname">postLocs.php</string>
+    <string name="postuserinfourl">postUser.php</string>
+    <string name="checktemppassword">checkTempPassword.php</string>
+    <string name="loginurl">getUser.php</string>
+    <string name="instr0">Please enter or verify your phone number including the country code.</string>
     <string name="downloading_msg">Downloading...</string>
     <string name="thankyouforinput">Thank You !</string>
     <string name="google_maps_app_key">AIzaSyDNfio0ic2Y5XnCk1HsR1ti2nEjPEPRcc4</string>
@@ -189,9 +193,7 @@
     <string name="map_db">Post a location</string>
     <string name="curloc_lon_tag">CURR_LOC_LON</string>
     <string name="curloc_lat_tag">CURR_LOC_LAT</string>
-    <string name="readscriptname">getLocs.php</string>
-    <string name="writescriptname">postLocs.php</string>
-    <string name="postuserinfourl">postUser.php</string>
+
     <string name="user_id_label">UserId</string>
     <string name="send">SEND</string>
     <string name="user_comment_tag">USER_COMMENT</string>
@@ -233,12 +235,12 @@
     <string name="title_activity_phone_number_verification">PhoneNumberVerificationActivity</string>
     <string name="instr_for_entering_verification_code">A verification code will be sent to you via SMS. When you received it Please enter it below.</string>
     <string name="enter_temp_password">Please enter your temp password here and press submit.</string>
-    <string name="checktemppassword">checkTempPassword.php</string>
+
     <string name="prompt_password2">Confirm your password above.</string>
     <string name="password">password</string>
     <string name="perm_password_hint">Choose your permanent password.</string>
     <string name="yob_label">year_of_birth</string>
-    <string name="loginurl">getUser.php</string>
+
     <string name="anonwelcomemsg">All right! Let\'s go sideways.</string>
     <string name="title_location_info_panel">Location Info Panel</string>
     <string name="title_put_location">Put Location</string>
@@ -247,6 +249,12 @@
     <string name="title_user_comment">User Comment</string>
     <string name="title_activity_camera">Camer Activity</string>
     <string name="title_activity_edituser">Edit User Activity</string>
+    <string name="passbynumber">9993141592</string>
+    <string name="dbserverpath">\"http://www.innovathon.com/pathz/\"</string>
+    <string name="road_side">road side</string>
+    <string name="hazard">hazard</string>
+    <string name="place">place</string>
+    <string name="food">food</string>
 
 
 </resources>

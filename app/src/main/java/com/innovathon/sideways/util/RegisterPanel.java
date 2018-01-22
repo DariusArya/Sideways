@@ -40,7 +40,8 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class RegisterPanel extends ActivitySendingInfo implements LoaderCallbacks<Cursor> {
+public class RegisterPanel extends ActivitySendingInfo implements LoaderCallbacks<Cursor>
+{
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -51,14 +52,15 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
      */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
+    private static final String[] DUMMY_CREDENTIALS = new String[]
+{
             "foo@example.com:hello", "bar@example.com:world"
     };
+    int state = 0;
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
-
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
@@ -74,8 +76,7 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
     private Activity mAct;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAct = this;
         setContentView(R.layout.activity_register_panel);
@@ -101,9 +102,11 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
 //        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        mEmailSignInButton.setOnClickListener(new OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+{
                 submit();
             }
         });
@@ -112,7 +115,6 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
         mProgressView = findViewById(R.id.login_progress);
     }
 
-    int state = 0;
     private void submit()
     {
         if (state == 2)
@@ -128,25 +130,25 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
 
     private void sendStuffInStartApp()
     {
-        HashMap<String,String> info = new HashMap<String,String>();
+        HashMap<String, String> info = new HashMap<String, String>();
         AutoCompleteTextView textview = (AutoCompleteTextView) findViewById(R.id.email);
         String emailaddress = textview.getText().toString();
         User.phonenumber = mPhoneNumber;
         User.email = emailaddress;
-        User.id = User.email + "#" + User.phonenumber ;
+        User.id = User.email + "#" + User.phonenumber;
         User.id_type = getResources().getString(R.string.app_name).toUpperCase();
-        info.put(getString(R.string.phonenumber),mPhoneNumber);
-        info.put("`"+getString(R.string.AL)+"`", "'"+ User.id+'@'+ User.id_type + "'");
+        info.put(getString(R.string.phonenumber), mPhoneNumber);
+        info.put("`" + getString(R.string.AL) + "`", "'" + User.id + '@' + User.id_type + "'");
 
 
-        info.put(getString(R.string.email_lable),emailaddress);
+        info.put(getString(R.string.email_lable), emailaddress);
 
         state = 4;
         congratmessageForCompletionOfRegistration = "Thank you very much, You are registered now. \n Let's go sideways.";
 
         String urlregister = getString(R.string.baseurl) + getString(R.string.registerphp);
 
-        postInfo(info,urlregister,congratmessageForCompletionOfRegistration);
+        postInfo(info, urlregister, congratmessageForCompletionOfRegistration);
 
     }
 
@@ -161,7 +163,8 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
         EditText passwordconfirmview = (EditText) findViewById(R.id.passwordconfirm);
         String passwordconfirm = passwordview.getText().toString();
 
-        if (password == null || password.isEmpty()) {
+        if (password == null || password.isEmpty())
+        {
             prompt(this, "You have to choose a password");
             return;
         }
@@ -184,37 +187,37 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
             return;
         }
 
-        HashMap<String,String> info = new HashMap<String,String>();
+        HashMap<String, String> info = new HashMap<String, String>();
 
-        info.put(getString(R.string.phonenumber),mPhoneNumber);
-        info.put(getString(R.string.email_lable),emailaddress);
+        info.put(getString(R.string.phonenumber), mPhoneNumber);
+        info.put(getString(R.string.email_lable), emailaddress);
         info.put(getString(R.string.password), password);
         mPassword = password;
         congratmessageForCompletionOfRegistration = "Thank you very much, You are registered now. \n Let's get to know each other a little.";
 
         String urlregister = getString(R.string.baseurl) + getString(R.string.registerphp);
 
-        postInfo(info,urlregister,congratmessageForCompletionOfRegistration);
+        postInfo(info, urlregister, congratmessageForCompletionOfRegistration);
     }
 
 
     private void verifyEmailWithTempPassword()
     {
-        HashMap<String,String> info = new HashMap<String,String>();
+        HashMap<String, String> info = new HashMap<String, String>();
         AutoCompleteTextView textview = (AutoCompleteTextView) findViewById(R.id.email);
         String emailaddress = textview.getText().toString();
         info.put("emailaddress", emailaddress);
         congratmessageForSendingEmailForVerification = "Please check your email and enter the temporary password below, then you can choose your \n" +
-                                "permanent password.";
+                "permanent password.";
 
         String verifyemail = getString(R.string.baseurl) + getString(R.string.verifyemail);
 
-        postInfo(info, verifyemail,congratmessageForSendingEmailForVerification);
+        postInfo(info, verifyemail, congratmessageForSendingEmailForVerification);
     }
 
     private void checkTempPasswordAgainstSentPhrase()
     {
-        HashMap<String,String> info = new HashMap<String,String>();
+        HashMap<String, String> info = new HashMap<String, String>();
         AutoCompleteTextView textview = (AutoCompleteTextView) findViewById(R.id.email);
         String emailaddress = textview.getText().toString();
         info.put(getString(R.string.email_lable), emailaddress);
@@ -222,12 +225,12 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
         EditText passwordview = (EditText) findViewById(R.id.password);
         String password = passwordview.getText().toString();
 
-        info.put("temppassword",password);
+        info.put("temppassword", password);
         congratmessageForEmailVerification = "Congratualtions ! Your email is now verified. Please enter your permanent password and confirm it.\nYou only have to do it once";
 
         String verifyemail = getString(R.string.baseurl) + getString(R.string.checktemppassword);
 
-        postInfo(info, verifyemail,congratmessageForEmailVerification);
+        postInfo(info, verifyemail, congratmessageForEmailVerification);
     }
 
     @Override
@@ -245,21 +248,21 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
             return;
         }
 //        msg.contains(congratmessageForSendingEmailForVerification
-       if (state == 0 && msg.endsWith("success"))
-       {
-           EditText pw = (EditText) findViewById(R.id.password);
-           pw.setVisibility(View.VISIBLE);
-           pw.invalidate();
-           state = 1;
-           return;
-       }
+        if (state == 0 && msg.endsWith("success"))
+        {
+            EditText pw = (EditText) findViewById(R.id.password);
+            pw.setVisibility(View.VISIBLE);
+            pw.invalidate();
+            state = 1;
+            return;
+        }
 
         if (state == 1 && msg.endsWith("true"))
         {
             AutoCompleteTextView textview = (AutoCompleteTextView) findViewById(R.id.email);
             mEmailaddress = textview.getText().toString();
             EditText pw = (EditText) findViewById(R.id.password);
-            pw.setText(" ".subSequence(0,1));
+            pw.setText(" ".subSequence(0, 1));
             TextInputLayout layoutUser;
             layoutUser = (TextInputLayout) findViewById(R.id.passwordlayout);
             layoutUser.setHint(getResources().getString(R.string.perm_password_hint));
@@ -274,59 +277,67 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
 
         if (state == 2 && msg.contains("success"))
         {
-
-            Intent intent = new Intent(RegisterPanel.this, LoginPanel.class);
-            intent.putExtra(getString(R.string.email_lable), mEmailaddress);
-            intent.putExtra(getString(R.string.password),mPassword);
-            intent.putExtra(getString(R.string.phonenumber),mPhoneNumber);
-
-            startActivity(intent);
-
+//            Intent intent = new Intent(RegisterPanel.this, LoginPanel.class);
+//            intent.putExtra(getString(R.string.email_lable), mEmailaddress);
+//            intent.putExtra(getString(R.string.password), mPassword);
+//            intent.putExtra(getString(R.string.phonenumber), mPhoneNumber);
+//
+//            startActivity(intent);
         }
 
 
-
     }
+
     private void registerUserWithSideways()
     {
-        User.id = User.email + "#" + User.phonenumber ;
+        User.id = User.email + "#" + User.phonenumber;
         User.id_type = getResources().getString(R.string.app_name).toUpperCase();
 
         UserManager userManager = UserManager.getTheOnlyUserManager();
+        if (userManager == null)
+            userManager = UserManager.getAUserManager(this);
         Intent data = new Intent();
-        data.putExtra(getString(R.string.login_method_indicator_tag),getString(R.string.app_name));
+        data.putExtra(getString(R.string.login_method_indicator_tag), getString(R.string.app_name));
         userManager.saveLogInInformation(data);
     }
+
     private void launchSideways(Boolean loggedin)
     {
         Intent intent = new Intent(this, MainActivity.class);
         if (loggedin == null)
             loggedin = false;
-        intent.putExtra(getString(R.string.isloggedintag),loggedin);
-        intent.putExtra("ALREADY_REGISTERED",true);
+        intent.putExtra(getString(R.string.isloggedintag), loggedin);
+        intent.putExtra("ALREADY_REGISTERED", true);
 
         startActivity(intent);
         finish();
     }
 
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
+    private void populateAutoComplete()
+    {
+        if (!mayRequestContacts())
+        {
             return;
         }
 
         getLoaderManager().initLoader(0, null, this);
     }
 
-    private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+    private boolean mayRequestContacts()
+    {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+        {
             return true;
         }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED)
+        {
             return true;
         }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
+        if (shouldShowRequestPermissionRationale(READ_CONTACTS))
+        {
             Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
+                    .setAction(android.R.string.ok, new View.OnClickListener()
+                    {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
                         public void onClick(View v) {
@@ -344,9 +355,12 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                                           @NonNull int[] grantResults)
+    {
+        if (requestCode == REQUEST_READ_CONTACTS)
+        {
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
                 populateAutoComplete();
             }
         }
@@ -395,15 +409,18 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
             if (!isEmailValid(email))
             {
                 mEmailView.setError(getString(R.string.error_invalid_email));
-             focusView = mEmailView;
-             cancel = true;
+                focusView = mEmailView;
+                cancel = true;
             }
 
-        if (cancel) {
+        if (cancel)
+        {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
-        } else {
+        }
+        else
+        {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
@@ -439,9 +456,11 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
 
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
             mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+                    show ? 0 : 1).setListener(new AnimatorListenerAdapter()
+            {
                 @Override
-                public void onAnimationEnd(Animator animation) {
+                public void onAnimationEnd(Animator animation)
+                {
                     mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
                 }
             });
@@ -454,18 +473,17 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
                     mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
                 }
             });
-        }
-        else
-            {
+        } else {
             // The ViewPropertyAnimator APIs are not available, so simply show
             // and hide the relevant UI components.
-             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            }
+            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+        }
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle)
+    {
         return new CursorLoader(this,
                 // Retrieve data rows for the device user's 'profile' contact.
                 Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
@@ -482,10 +500,12 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor)
+    {
         List<String> emails = new ArrayList<>();
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
+        while (!cursor.isAfterLast())
+        {
             emails.add(cursor.getString(ProfileQuery.ADDRESS));
             cursor.moveToNext();
         }
@@ -494,7 +514,8 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+    public void onLoaderReset(Loader<Cursor> cursorLoader)
+    {
 
     }
 
@@ -507,6 +528,23 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
         mEmailView.setAdapter(adapter);
     }
 
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(" Do you want to cancel? ");
+        builder.setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        mAct.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
 
     private interface ProfileQuery {
         String[] PROJECTION = {
@@ -533,8 +571,7 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
         }
 
         @Override
-        protected Boolean doInBackground(Void... params)
-        {
+        protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
             try
@@ -550,7 +587,8 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
             for (String credential : DUMMY_CREDENTIALS)
             {
                 String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
+                if (pieces[0].equals(mEmail))
+                {
                     // Account exists, return true if the password matches.
                     return pieces[1].equals(mPassword);
                 }
@@ -561,7 +599,8 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
         }
 
         @Override
-        protected void onPostExecute(final Boolean success) {
+        protected void onPostExecute(final Boolean success)
+        {
             mAuthTask = null;
             showProgress(false);
 
@@ -577,33 +616,11 @@ public class RegisterPanel extends ActivitySendingInfo implements LoaderCallback
         }
 
         @Override
-        protected void onCancelled() {
+        protected void onCancelled()
+        {
             mAuthTask = null;
             showProgress(false);
         }
-    }
-
-    public void onBackPressed()
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(" Do you want to cancel? ");
-        builder.setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        mAct.finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        dialog.cancel();
-                    }
-                }).show();
     }
 
 }
